@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+.mainColor{
+	color: #ca0c16;
+}
+.mainBackColor{
+	background-color: #ca0c16;
+	color: #fff;
+}
+

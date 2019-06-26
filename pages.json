@@ -1,0 +1,45 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+		},
+		{
+			"path": "pages/shop/shop"
+			
+		},
+		{
+			"path": "pages/center/center"
+			
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "高守施工",
+		"navigationBarBackgroundColor": "#ca0c16",
+		"backgroundColor": "#ca0c16"
+	},
+	"tabBar": {
+		"color": "#FFFFFF",
+		"selectedColor": "#ffa600",
+		"borderStyle": "white",
+		"backgroundColor": "#ca0c16",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/icon/home.png",
+				"selectedIconPath": "static/icon/home1.png",
+				"text": "首页"
+			}, {
+				"pagePath": "pages/shop/shop",
+				"iconPath": "static/icon/shop.png",
+				"selectedIconPath": "static/icon/shop1.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/center/center",
+				"iconPath": "static/icon/center.png",
+				"selectedIconPath": "static/icon/center1.png",
+				"text": "个人中心"
+			}
+		]
+	}
+}
