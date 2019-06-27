@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
     "pages/shop/shop",
     "pages/center/center"
@@ -11,32 +12,6 @@
     "navigationBarBackgroundColor": "#ca0c16",
     "backgroundColor": "#ca0c16"
   },
-  "tabBar": {
-    "color": "#FFFFFF",
-    "selectedColor": "#ffa600",
-    "borderStyle": "white",
-    "backgroundColor": "#ca0c16",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "static/icon/home.png",
-        "selectedIconPath": "static/icon/home1.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/shop/shop",
-        "iconPath": "static/icon/shop.png",
-        "selectedIconPath": "static/icon/shop1.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/center/center",
-        "iconPath": "static/icon/center.png",
-        "selectedIconPath": "static/icon/center1.png",
-        "text": "个人中心"
-      }
-    ]
-  },
   "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap38.json"
 }

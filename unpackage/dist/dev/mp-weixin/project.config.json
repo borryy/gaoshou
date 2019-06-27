@@ -4,13 +4,12 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"newFeature": true
+		"urlCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.2",
-	"appid": "wxe6ca0055d8412481",
-	"projectname": "mp-weixin",
+	"libVersion": "2.7.0",
+	"appid": "touristappid",
+	"projectname": "gaoshou",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

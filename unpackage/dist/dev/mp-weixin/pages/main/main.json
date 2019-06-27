@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "index": "/pages/index/index",
+    "shop": "/pages/shop/shop",
+    "center": "/pages/center/center"
+  }
+}

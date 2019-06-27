@@ -154,3 +154,75 @@
 	font-size: 36rpx!important;
 }
 
+
+.content {
+	text-align: center;
+	height: 400rpx;
+}
+.logo {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+}
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+
+
+.content {
+	text-align: center;
+	height: 400rpx;
+}
+.logo {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+}
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+
+
+.tabBar{
+	height: 100rpx;
+	width: 100%;
+	padding-top: 10rpx;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	text-align: center;
+	background-color: #CA0C16;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.tabBar .navList{
+	width: 33.33%;
+}
+.tabBar .navList .icon{
+	width: 20%;
+	position: relative;
+	height: 0;
+	padding-bottom: 20%;
+	margin: 0 auto;
+}
+.tabBar .navList .iconl{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.tabBar .navList .title{
+	color: #FFFFFF;
+	font-size: 26rpx;
+}
+.tabBar .navList.active .title{
+	color: #FFA600;
+}
+

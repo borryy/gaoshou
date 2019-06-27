@@ -90,6 +90,78 @@
 						<uni-icon type="minus" color="#ca0c16" size="20"></uni-icon>
 					</view>
 				</view>
+				<view class="rightList">
+					<view class="tipImg">
+						<image class="imgs" src="/static/icon/head.png" mode=""></image>
+					</view>
+					<view class="msg">
+						<view class="tit">
+							清包美缝服务
+						</view>
+						<view class="small">
+							只包含人工费，每小时30元
+						</view>
+					</view>
+					<view class="add">
+						<uni-icon type="plus" color="#ca0c16" size="20"></uni-icon>
+						<input type="number" value="0" />
+						<uni-icon type="minus" color="#ca0c16" size="20"></uni-icon>
+					</view>
+				</view>
+				<view class="rightList">
+					<view class="tipImg">
+						<image class="imgs" src="/static/icon/head.png" mode=""></image>
+					</view>
+					<view class="msg">
+						<view class="tit">
+							清包美缝服务
+						</view>
+						<view class="small">
+							只包含人工费，每小时30元
+						</view>
+					</view>
+					<view class="add">
+						<uni-icon type="plus" color="#ca0c16" size="20"></uni-icon>
+						<input type="number" value="0" />
+						<uni-icon type="minus" color="#ca0c16" size="20"></uni-icon>
+					</view>
+				</view>
+				<view class="rightList">
+					<view class="tipImg">
+						<image class="imgs" src="/static/icon/head.png" mode=""></image>
+					</view>
+					<view class="msg">
+						<view class="tit">
+							清包美缝服务
+						</view>
+						<view class="small">
+							只包含人工费，每小时30元
+						</view>
+					</view>
+					<view class="add">
+						<uni-icon type="plus" color="#ca0c16" size="20"></uni-icon>
+						<input type="number" value="0" />
+						<uni-icon type="minus" color="#ca0c16" size="20"></uni-icon>
+					</view>
+				</view>
+				<view class="rightList">
+					<view class="tipImg">
+						<image class="imgs" src="/static/icon/head.png" mode=""></image>
+					</view>
+					<view class="msg">
+						<view class="tit">
+							清包美缝服务
+						</view>
+						<view class="small">
+							只包含人工费，每小时30元
+						</view>
+					</view>
+					<view class="add">
+						<uni-icon type="plus" color="#ca0c16" size="20"></uni-icon>
+						<input type="number" value="0" />
+						<uni-icon type="minus" color="#ca0c16" size="20"></uni-icon>
+					</view>
+				</view>
 			</scroll-view>
 		</view>
 	</view>
@@ -130,6 +202,46 @@
 								"id":"4",
 								"title":"防水用品",
 								"children":[]
+							},
+							{
+								"id":"3",
+								"title":"美缝剂胶",
+								"children":[]
+							},
+							{
+								"id":"4",
+								"title":"防水用品",
+								"children":[]
+							},
+							{
+								"id":"3",
+								"title":"美缝剂胶",
+								"children":[]
+							},
+							{
+								"id":"4",
+								"title":"防水用品",
+								"children":[]
+							},
+							{
+								"id":"3",
+								"title":"美缝剂胶",
+								"children":[]
+							},
+							{
+								"id":"4",
+								"title":"防水用品",
+								"children":[]
+							},
+							{
+								"id":"3",
+								"title":"美缝剂胶",
+								"children":[]
+							},
+							{
+								"id":"4",
+								"title":"防水用品",
+								"children":[]
 							}
 						]
 					},
@@ -147,6 +259,9 @@
 			},
 			changeItem:function(id){
 				this.titleId = id
+			},
+			go:function(){ 
+				
 			}
 		}
 	}
@@ -206,6 +321,7 @@
 		bottom: 0;
 		background-color: #f5f5f5;
 		left: 0;
+		padding-bottom: 100upx;
 	}
 	.scroll-Y .scroll-view-item{
 		text-align: center;
@@ -237,6 +353,7 @@
 		bottom: 0;
 		right: 0;
 		background-color: #FFFFFF;
+		padding-bottom: 100upx;
 	}
 	.scroll-Y-R .rightList{
 		font-size: 28upx;

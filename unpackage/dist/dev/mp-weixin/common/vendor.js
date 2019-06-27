@@ -7258,17 +7258,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "C:\\Users\\Administrator\\Desktop\\gaoshou\\main.js":
-/*!******************************************************!*\
-  !*** C:/Users/Administrator/Desktop/gaoshou/main.js ***!
-  \******************************************************/
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js":
+/*!*************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages.json");
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\App.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\App.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
@@ -7282,61 +7282,78 @@ createApp(app).$mount();
 
 /***/ }),
 
-/***/ "C:\\Users\\Administrator\\Desktop\\gaoshou\\main.js?{\"page\":\"pages%2Fcenter%2Fcenter\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/gaoshou/main.js?{"page":"pages%2Fcenter%2Fcenter"} ***!
-  \*****************************************************************************************/
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Fcenter%2Fcenter\"}":
+/*!************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Fcenter%2Fcenter"} ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _center = _interopRequireDefault(__webpack_require__(/*! ./pages/center/center.vue */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages\\center\\center.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _center = _interopRequireDefault(__webpack_require__(/*! ./pages/center/center.vue */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages\\center\\center.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_center.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "C:\\Users\\Administrator\\Desktop\\gaoshou\\main.js?{\"page\":\"pages%2Findex%2Findex\"}":
-/*!***************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/gaoshou/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \***************************************************************************************/
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Findex%2Findex\"}":
+/*!**********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages\\index\\index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages\\index\\index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "C:\\Users\\Administrator\\Desktop\\gaoshou\\main.js?{\"page\":\"pages%2Fshop%2Fshop\"}":
-/*!*************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/gaoshou/main.js?{"page":"pages%2Fshop%2Fshop"} ***!
-  \*************************************************************************************/
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Fmain%2Fmain\"}":
+/*!********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Fmain%2Fmain"} ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _shop = _interopRequireDefault(__webpack_require__(/*! ./pages/shop/shop.vue */ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages\\shop\\shop.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _main = _interopRequireDefault(__webpack_require__(/*! ./pages/main/main.vue */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages\\main\\main.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_main.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Fshop%2Fshop\"}":
+/*!********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Fshop%2Fshop"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _shop = _interopRequireDefault(__webpack_require__(/*! ./pages/shop/shop.vue */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages\\shop\\shop.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_shop.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "C:\\Users\\Administrator\\Desktop\\gaoshou\\pages.json":
-/*!*********************************************************!*\
-  !*** C:/Users/Administrator/Desktop/gaoshou/pages.json ***!
-  \*********************************************************/
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json":
+/*!****************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/pages.json ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
