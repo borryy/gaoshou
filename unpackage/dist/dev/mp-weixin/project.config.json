@@ -8,9 +8,11 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.7.2",
 	"appid": "wxe6ca0055d8412481",
-	"projectname": "gaoshou",
+	"projectname": "mp-weixin",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
