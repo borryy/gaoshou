@@ -1,14 +1,14 @@
 
-.content {
+.content.data-v-3672ec93 {
 	text-align: center;
 	height: 400rpx;
 }
-.logo {
+.logo.data-v-3672ec93 {
 	height: 200rpx;
 	width: 200rpx;
 	margin-top: 200rpx;
 }
-.title {
+.title.data-v-3672ec93 {
 	font-size: 36rpx;
 	color: #8f8f94;
 }

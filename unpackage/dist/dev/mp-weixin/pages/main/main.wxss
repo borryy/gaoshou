@@ -1,5 +1,5 @@
 
-.topMsg{
+.topMsg.data-v-348302ce{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -11,7 +11,7 @@
 	color: #fff;
 	font-size: 28rpx;
 }
-.topMsg .logo{
+.topMsg .logo.data-v-348302ce{
 	position: relative;
 	width: 20%;
 	height: 0;
@@ -20,38 +20,38 @@
 	        border-radius: 16rpx;
 	overflow: hidden;
 }
-.topMsg .logo .headlogo{
+.topMsg .logo .headlogo.data-v-348302ce{
 	position:  absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
-.topMsg .detile{
+.topMsg .detile.data-v-348302ce{
 	width: 80%;
 	padding-left: 20rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.topMsg .detile .list{
+.topMsg .detile .list.data-v-348302ce{
 	overflow: hidden;
 	-o-text-overflow:ellipsis;
 	   text-overflow:ellipsis;
 	white-space: nowrap;
 	margin-top: 10rpx;
 }
-.topMsg .detile .names{
+.topMsg .detile .names.data-v-348302ce{
 	margin-top: 0;
 }
-.content{
+.content.data-v-348302ce{
 	height: 100%;
 }
-.main{
+.main.data-v-348302ce{
 	height: 100%;
 	overflow: hidden;
 	border-top: 1px solid #FFFFFF;
 }
-.scroll-Y{
+.scroll-Y-L.data-v-348302ce{
 	width: 25%;
 	position: absolute;
 	top: 223rpx;
@@ -60,17 +60,17 @@
 	left: 0;
 	padding-bottom: 100rpx;
 }
-.scroll-Y .scroll-view-item{
+.scroll-Y-L .scroll-view-item.data-v-348302ce{
 	text-align: center;
 	padding: 30rpx 0;
 	font-size: 28rpx;
 }
-.scroll-Y .scroll-view-item.active{
+.scroll-Y-L .scroll-view-item.active.data-v-348302ce{
 	background-color: #FFFFFF;
 	color: #ca0c16;
 	position: relative;
 }
-.scroll-Y .scroll-view-item.active::before{
+.scroll-Y-L .scroll-view-item.active.data-v-348302ce::before{
 	content: '';
 	position: absolute;
 	border-right: 2px solid #ca0c16;
@@ -78,12 +78,12 @@
 	left: 10rpx;
 	top: 34rpx;
 }
-.scroll-Y .listTitle{
+.scroll-Y-L .listTitle.data-v-348302ce{
 	padding: 20rpx 0;
 	font-size: 30rpx;
 	border-top: 1px solid #FFFFFF;
 }
-.scroll-Y-R{
+.scroll-Y-R.data-v-348302ce{
 	width: 75%;
 	position: absolute;
 	top: 223rpx;
@@ -91,8 +91,9 @@
 	right: 0;
 	background-color: #FFFFFF;
 	padding-bottom: 100rpx;
+	white-space:nowrap;
 }
-.scroll-Y-R .rightList{
+.scroll-Y-R .rightList.data-v-348302ce{
 	font-size: 28rpx;
 	padding: 20rpx;
 	-webkit-box-sizing: border-box;
@@ -103,30 +104,30 @@
 	display: flex;
 	border-bottom: 1rpx solid #f5f5f5;
 }
-.scroll-Y-R .rightList .tipImg{
+.scroll-Y-R .rightList .tipImg.data-v-348302ce{
 	width: 25%;
 	height: 0;
 	padding-bottom: 25%;
 	position: relative;
 }
-.scroll-Y-R .rightList .tipImg .imgs{
+.scroll-Y-R .rightList .tipImg .imgs.data-v-348302ce{
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.scroll-Y-R .rightList .msg{
+.scroll-Y-R .rightList .msg.data-v-348302ce{
 	width: 55%;
 	padding-left: 16rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.scroll-Y-R .rightList .msg .small{
+.scroll-Y-R .rightList .msg .small.data-v-348302ce{
 	font-size: 24rpx;
 	color: #555555;
 }
-.scroll-Y-R .rightList .add{
+.scroll-Y-R .rightList .add.data-v-348302ce{
 	width: 20%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -144,48 +145,43 @@
 	    -ms-flex-align:end;
 	        align-items:flex-end;
 }
-.scroll-Y-R .rightList .add input{
-	height: 43rpx!important;
-	min-height: 43rpx;
-	font-size: 24rpx;
-	text-align: center;
-}
-.scroll-Y-R .rightList .add .uni-icon{
-	font-size: 36rpx!important;
+.scroll-Y-R .rightList .add .addimg.data-v-348302ce{
+	width: 30rpx;
+	height: 30rpx;
 }
 
 
-.content {
+.content.data-v-7717c5b3 {
 	text-align: center;
 	height: 400rpx;
 }
-.logo {
+.logo.data-v-7717c5b3 {
 	height: 200rpx;
 	width: 200rpx;
 	margin-top: 200rpx;
 }
-.title {
+.title.data-v-7717c5b3 {
 	font-size: 36rpx;
 	color: #8f8f94;
 }
 
 
-.content {
+.content.data-v-3672ec93 {
 	text-align: center;
 	height: 400rpx;
 }
-.logo {
+.logo.data-v-3672ec93 {
 	height: 200rpx;
 	width: 200rpx;
 	margin-top: 200rpx;
 }
-.title {
+.title.data-v-3672ec93 {
 	font-size: 36rpx;
 	color: #8f8f94;
 }
 
 
-.tabBar{
+.tabBars{
 	height: 100rpx;
 	width: 100%;
 	padding-top: 10rpx;
@@ -201,28 +197,29 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.tabBar .navList{
+.tabBars .navList{
 	width: 33.33%;
 }
-.tabBar .navList .icon{
+.tabBars .navList .icon{
 	width: 20%;
 	position: relative;
 	height: 0;
 	padding-bottom: 20%;
 	margin: 0 auto;
 }
-.tabBar .navList .iconl{
+.tabBars .navList .iconl{
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
-.tabBar .navList .title{
+.tabBars .navList .title{
 	color: #FFFFFF;
 	font-size: 26rpx;
 }
-.tabBar .navList.active .title{
+.tabBars .navList.active .title{
 	color: #FFA600;
 }
+
 

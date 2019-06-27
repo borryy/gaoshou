@@ -23,7 +23,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.content {
 		text-align: center;
 		height: 400upx;
