@@ -8,7 +8,53 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _uniPopup = function _uniPopup() {return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-popup/uni-popup */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\node_modules\\@dcloudio\\uni-ui\\lib\\uni-popup\\uni-popup.vue"));};var _uniIcon = function _uniIcon() {return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-icon/uni-icon */ "node-modules/@dcloudio/uni-ui/lib/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-icon/uni-icon */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\node_modules\\@dcloudio\\uni-ui\\lib\\uni-icon\\uni-icon.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _uniIcon = function _uniIcon() {return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-icon/uni-icon */ "node-modules/@dcloudio/uni-ui/lib/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-icon/uni-icon */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\node_modules\\@dcloudio\\uni-ui\\lib\\uni-icon\\uni-icon.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54,14 +100,25 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 {
-  components: { uniIcon: _uniIcon, uniPopup: _uniPopup },
+  components: { uniIcon: _uniIcon },
   data: function data() {
     return {
       titleId: '',
       mainList1: [],
       mainList2: [],
       lists: [],
-      showPopupBottomShare: false,
+      num: 0,
+      colorOn: '0',
+      colorActive: {},
+      colorList: [
+      { title: '蓝白色', img: '/static/logo.png' },
+      { title: '蓝黑色', img: '/static/icon/head.png' },
+      { title: '蓝绿色', img: '/static/logo.png' },
+      { title: '蓝白色', img: '/static/icon/head.png' },
+      { title: '蓝黑色', img: '/static/logo.png' },
+      { title: '蓝绿色', img: '/static/icon/head.png' }],
+
+      showModal: false,
       mainList: [
       {
         "title": "高守施工",
@@ -223,22 +280,66 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   },
   mounted: function mounted() {
+    var that = this;
     this.titleId = this.mainList[0].children[0].id;
     this.mainList1 = this.mainList[0].children;
     this.mainList2 = this.mainList[1].children;
-    var that = this;
     this.lists = this.mainList1.filter(function (item) {
       return item.id == that.titleId;
     })[0].children;
-    console.log(this.lists);
+    this.colorActive = this.colorList[this.colorOn];
   },
   methods: {
-    showBottom: function showBottom() {
-      this.showPopupBottomShare = !this.showPopupBottomShare;
+    //显示选择规格底部弹框
+    showModalClick: function showModalClick() {
+      this.showModal = !this.showModal;
     },
-    hidePopup: function hidePopup() {
+    //选择规格按钮事件
+    colorOnClick: function colorOnClick(index) {
+      this.colorOn = index;
+      this.colorActive = this.colorList[this.colorOn];
+    },
+    //增加规格数量
+    addNum: function addNum() {
+      this.num = parseInt(this.num) + 1;
+    },
+    //减少规格数量
+    minusNum: function minusNum() {
+      if (this.num < 1) {
+        this.num = 0;
+      } else {
+        this.num = parseInt(this.num) - 1;
+      }
+    },
+    //底部弹框立即购买
+    goShop: function goShop() {
+      uni.showToast({
+        icon: "loading",
+        title: "loading..." });
+
+      this.showModalClick();
+      uni.navigateTo({
+        url: "/pages/shop/shop" });
 
     },
+    //底部弹框加入购物车
+    addShop: function addShop() {
+      if (this.num == 0) {
+        uni.showToast({
+          title: "请选择购买数量！",
+          icon: "none" });
+
+      } else {
+        uni.showToast({
+          title: "加入购物车成功！",
+          icon: "none" });
+
+      }
+      setTimeout(function () {
+        uni.hideToast();
+      }, 1500);
+    },
+    //侧边栏点击分类事件
     changeItem: function changeItem(id, pid) {
       this.titleId = id;
       if (pid == 1) {
@@ -250,12 +351,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
           return item.id == id;
         })[0].children;
       }
-    },
-    go: function go() {
-      this.titleId = this.mainList[0].children[0].id;
-      this.mainList1 = this.mainList[0].children;
-      this.mainList2 = this.mainList[1].children;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

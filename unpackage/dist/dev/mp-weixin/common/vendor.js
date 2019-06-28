@@ -7282,6 +7282,23 @@ createApp(app).$mount();
 
 /***/ }),
 
+/***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Faddress%2Faddress\"}":
+/*!**************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Faddress%2Faddress"} ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _address = _interopRequireDefault(__webpack_require__(/*! ./pages/address/address.vue */ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\pages\\address\\address.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_address.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "C:\\Users\\Administrator\\Desktop\\height\\gaoshou\\main.js?{\"page\":\"pages%2Fcenter%2Fcenter\"}":
 /*!************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/height/gaoshou/main.js?{"page":"pages%2Fcenter%2Fcenter"} ***!

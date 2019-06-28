@@ -14,11 +14,23 @@
 
 <style>
 	/*每个页面公共css */
+	@import "/common/uni.css";
 	.mainColor{
 		color: #ca0c16;
 	}
 	.mainBackColor{
 		background-color: #ca0c16;
 		color: #fff;
+	}
+	.parent{
+		height: 0;
+		position: relative;
+	}
+	.parent .son{
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
 	}
 </style>

@@ -2,7 +2,6 @@
 	<view class="bodyMain">
 		<view class="cont">
 			<Index v-if="pageNames == 'index'"></Index>
-			<shop v-if="pageNames == 'shop'"></shop>
 			<center v-if="pageNames == 'center'"></center>
 		</view>
 		<view class="tabBars">
@@ -15,19 +14,17 @@
 					{{item.text}}
 				</view>
 			</view>
-		</view>
+		</view> 
 	</view>
 	
 </template>
 
 <script>
 	import Index from "../../pages/index/index";
-	import Shop from "../../pages/shop/shop";
 	import Center from "../../pages/center/center";
 	export default {
 		components:{ 
 			Index,
-			Shop,
 			Center
 		},
 		data() {
@@ -65,8 +62,19 @@
 		},
 		methods: {
 			navGo:function(index){
-				this.act = index;
-				this.pageNames = this.tabBar.list[index].pageName
+				if(this.tabBar.list[index].pageName == 'shop'){
+					uni.showToast({
+						icon:"loading",
+						title:"loading..."
+					})
+					uni.navigateTo({
+						url:"/pages/shop/shop"
+					})
+				}else{
+					this.act = index;
+					this.pageNames = this.tabBar.list[index].pageName
+				}
+				
 			}
 		}
 	}
