@@ -21,23 +21,23 @@
 				<uni-icon type="arrowright"></uni-icon>
 			</view>
 		</view>
-		<view class="addAddress">
+		<view class="addAddress" @tap="toggleTab()">
 			<view class="mapIcon">
 				<image class="mapImg" src="/static/icon/time.png" mode=""></image>
 			</view>
-			<view class="addressMsg">
-				<view class="names" v-if="timeLe">
-					2019年10月21日 13:20
+			<view class="addressMsg" >
+				<view class="names" >
+					{{resultInfo.result}}
 				</view>
-				<view class="names" v-else>
-					配送/服务时间
-				</view>
+				
 			</view>
 
 			<view class="addrRight">
 				<uni-icon type="arrowright"></uni-icon>
 			</view>
+			
 		</view>
+		<w-picker mode="limit" dayStep="30" step="1"  :current="true" @confirm="onConfirm" ref="picker" themeColor="#f00"></w-picker>
 		<view class="productMain">
 			<view class="pList">
 				<view class="pRadio parent">
@@ -130,18 +130,22 @@
 </template>
 
 <script>
-	import {
-		uniIcon
-	} from '@dcloudio/uni-ui'
+	import uniIcon from '@/components/uni-icon/uni-icon.vue';
+	import wPicker from "@/components/w-picker/w-picker.vue";
+	
 	export default {
 		components: {
-			uniIcon
+			uniIcon,
+			wPicker 
 		},
 		data() {
 			return {
 				addrLe: true,
 				timeLe: true,
-				num:2
+				num:2,
+				resultInfo:{
+					result:"配送/服务日期（必填）"
+				}
 			}
 		},
 		onLoad() {
@@ -170,7 +174,16 @@
 				uni.navigateTo({
 					url:"/pages/address/address"
 				})
+			},
+			toggleTab:function() {
+				this.$refs.picker.show();
+			},
+			onConfirm:function(val){
+				console.log(val);
+				this.resultInfo=val;
+				this.$refs.picker.hide();
 			}
+			
 		}
 	}
 </script>
@@ -209,7 +222,9 @@
 		top: 0;
 		left: 0;
 	}
-
+	.addAddress .addressMsg view{
+		line-height: 1.5;
+	}
 	.addAddress .addressMsg {
 		width: 90%;
 		padding-left: 30upx;
@@ -262,6 +277,7 @@
 	.productMain .addNum{
 		display: flex;
 		align-items:center;
+		padding-top: 20upx;
 	}
 	.productMain .addNum input{
 		width: 50upx;

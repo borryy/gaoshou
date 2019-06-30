@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/shop/shop",
     "pages/center/center",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/order/order"
   ],
   "subPackages": [],
   "window": {

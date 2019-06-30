@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "uni-icon": "/node-modules/@dcloudio/uni-ui/lib/uni-icon/uni-icon"
+    "uni-icon": "/components/uni-icon/uni-icon",
+    "w-picker": "/components/w-picker/w-picker"
   }
 }

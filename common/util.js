@@ -1,73 +1,102 @@
-function formatTime(time) {
-	if (typeof time !== 'number' || time < 0) {
-		return time
-	}
-
-	var hour = parseInt(time / 3600)
-	time = time % 3600
-	var minute = parseInt(time / 60)
-	time = time % 60
-	var second = time
-
-	return ([hour, minute, second]).map(function (n) {
-		n = n.toString()
-		return n[1] ? n : '0' + n
-	}).join(':')
+function forMatNum(num){
+	return num<10?'0'+num:num+'';
 }
 
-function formatLocation(longitude, latitude) {
-	if (typeof longitude === 'string' && typeof latitude === 'string') {
-		longitude = parseFloat(longitude)
-		latitude = parseFloat(latitude)
-	}
-
-	longitude = longitude.toFixed(2)
-	latitude = latitude.toFixed(2)
-
-	return {
-		longitude: longitude.toString().split('.'),
-		latitude: latitude.toString().split('.')
-	}
+function initDays(year,month){
+	let totalDays=new Date(year,month,0).getDate();
+	let dates=[];
+	for(let d=1;d<=totalDays;d++){
+		dates.push(forMatNum(d));
+	};
+	return dates;
 }
-var dateUtils = {
-	UNITS: {
-		'年': 31557600000,
-		'月': 2629800000,
-		'天': 86400000,
-		'小时': 3600000,
-		'分钟': 60000,
-		'秒': 1000
-	},
-	humanize: function (milliseconds) {
-		var humanize = '';
-		for (var key in this.UNITS) {
-			if (milliseconds >= this.UNITS[key]) {
-				humanize = Math.floor(milliseconds / this.UNITS[key]) + key + '前';
-				break;
+function initPicker(start,end,mode="date",step,value,flag) {
+	let aToday=new Date();
+	let tYear,tMonth,tDay,tHours,tMinutes,tSeconds,defaultVal=[];
+	let initstartDate=new Date(start);
+	let endDate=new Date(end);
+	if(start>end){
+		initstartDate=new Date(end);
+		endDate=new Date(start);
+	};
+	let startYear=initstartDate.getFullYear();
+	let startMonth=initstartDate.getMonth()+1;
+	let endYear=endDate.getFullYear();
+	let years=[],months=[],days=[],hours=[],minutes=[],seconds=[],returnArr=[];
+	let curMonth=flag?value[1]*1:(value[1]+1);
+	let totalDays=new Date(startYear,curMonth,0).getDate();
+	for(let s=startYear;s<=endYear;s++){
+		years.push(s+'');
+	};
+	for(let m=1;m<=12;m++){
+		months.push(forMatNum(m));
+	};
+	for(let d=1;d<=totalDays;d++){
+		days.push(forMatNum(d));
+	}
+	for(let h=0;h<24;h++){
+		hours.push(forMatNum(h));
+	}
+	for(let m=0;m<60;m+=step*1){
+		minutes.push(forMatNum(m));
+	}
+	for(let s=0;s<60;s++){
+		seconds.push(forMatNum(s));
+	}
+	if(flag){
+		returnArr=[
+			years.indexOf(value[0]),
+			months.indexOf(value[1]),
+			days.indexOf(value[2]),
+			hours.indexOf(value[3]),
+			minutes.indexOf(value[4])==-1?0:minutes.indexOf(value[4]),
+			seconds.indexOf(value[5])
+		]
+	};
+	switch(mode){
+		case "range":
+			if(flag){
+				defaultVal=[returnArr[0],returnArr[1],returnArr[2],0,returnArr[0],returnArr[1],returnArr[2]];
+				return {years,months,days,defaultVal}
+			}else{
+				return {years,months,days}
 			}
-		}
-		return humanize || '刚刚';
-	},
-	format: function (dateStr) {
-		var date = this.parse(dateStr)
-		var diff = Date.now() - date.getTime();
-		if (diff < this.UNITS['天']) {
-			return this.humanize(diff);
-		}
-		var _format = function (number) {
-			return (number < 10 ? ('0' + number) : number);
-		};
-		return date.getFullYear() + '/' + _format(date.getMonth() + 1) + '/' + _format(date.getDay()) + '-' +
-			_format(date.getHours()) + ':' + _format(date.getMinutes());
-	},
-	parse: function (str) { //将"yyyy-mm-dd HH:MM:ss"格式的字符串，转化为一个Date对象
-		var a = str.split(/[^0-9]/);
-		return new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
+			break;
+		case "date":
+			if(flag){
+				defaultVal=[returnArr[0],returnArr[1],returnArr[2]];
+				return {years,months,days,defaultVal}
+			}else{
+				return {years,months,days}
+			}
+			break;
+		case "yearMonth":
+			if(flag){
+				defaultVal=[returnArr[0],returnArr[1]];
+				return {years,months,defaultVal}
+			}else{
+				return {years,months}
+			}
+			break;
+		case "dateTime":
+			if(flag){
+				defaultVal=returnArr;
+				return {years,months,days,hours,minutes,seconds,defaultVal}
+			}else{
+				return {years,months,days,hours,minutes,seconds}
+			}
+			break;
+		case "time":
+			if(flag){
+				defaultVal=[returnArr[3],returnArr[4],returnArr[5]];
+				return {hours,minutes,seconds,defaultVal}
+			}else{
+				return {hours,minutes,seconds}
+			}
+			break;			
 	}
-};
-
-module.exports = {
-	formatTime: formatTime,
-	formatLocation: formatLocation,
-	dateUtils: dateUtils
+}
+export{
+	initDays,
+	initPicker
 }

@@ -92,6 +92,7 @@
 		text-align: center;
 		background-color: #CA0C16;
 		box-sizing: border-box;
+		line-height: 1;
 	}
 	.tabBars .navList{
 		width: 33.33%;

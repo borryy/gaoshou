@@ -11,11 +11,23 @@
 			
 		},
 		{
-			"path": "pages/center/center"
+			"path": "pages/center/center",
+			"style": {
+			    "navigationBarTitleText": "个人中心"
+			}
 			
 		},
 		{
 			"path": "pages/address/address"
+			
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": true,
+				"backgroundTextStyle": "light"
+            }
 			
 		}
 	],

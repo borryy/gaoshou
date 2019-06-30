@@ -88,7 +88,7 @@
 </template>
 
 <script>
-	import {uniIcon} from '@dcloudio/uni-ui'
+	import uniIcon from '@/components/uni-icon/uni-icon.vue';
 	export default {
 		components: {uniIcon},
 		data() { 
@@ -354,7 +354,7 @@
 		box-sizing: border-box;
 		height: 223upx;
 		color: #fff;
-		font-size: 28upx;
+		font-size: 32upx;
 	}
 	.topMsg .logo{
 		position: relative;
@@ -380,7 +380,8 @@
 		overflow: hidden;
 		text-overflow:ellipsis;
 		white-space: nowrap;
-		margin-top: 10upx;
+		margin-top: 20upx;
+		font-size: 30upx;
 	}
 	.topMsg .detile .names{
 		margin-top: 0;
@@ -460,6 +461,9 @@
 		padding-left: 16upx;
 		box-sizing: border-box;
 	}
+	.scroll-Y-R .rightList .msg view{
+		line-height: 1.8;
+	}
 	.scroll-Y-R .rightList .msg .small{
 		font-size: 24upx;
 		color: #555555;
@@ -538,6 +542,9 @@
 		text-overflow:ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
+	}
+	.modal .modalMain .modalTop .topMsgm view{
+		line-height: 1.8;
 	}
 	.modal .modalMain .modalTop .topMsgm .small{
 		font-size: 32upx;

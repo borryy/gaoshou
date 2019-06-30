@@ -11,10 +11,12 @@
 		}
 	}
 </script>
-
 <style>
 	/*每个页面公共css */
 	@import "/common/uni.css";
+	page{
+		background-color: #eee;
+	}
 	.mainColor{
 		color: #ca0c16;
 	}
@@ -32,5 +34,8 @@
 		top: 0;
 		left: 0;
 		position: absolute;
+	}
+	view{
+		line-height: 1;
 	}
 </style>

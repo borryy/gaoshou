@@ -12,7 +12,6 @@
 
 
 
-
 /*每个页面公共css */
 @font-face {
 	font-family: uniicons;
@@ -1630,6 +1629,9 @@ radio-group label, checkbox-group label{
         -ms-transform: translateY(50%);
             transform: translateY(50%);
 }
+page{
+	background-color: #eee;
+}
 .mainColor{
 	color: #ca0c16;
 }
@@ -1647,5 +1649,8 @@ radio-group label, checkbox-group label{
 	top: 0;
 	left: 0;
 	position: absolute;
+}
+view{
+	line-height: 1;
 }
 
