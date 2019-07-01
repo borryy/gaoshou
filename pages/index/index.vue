@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- 头部信息 -->
-		<view class="topMsg mainBackColor">
+		<view class="topMsg">
 			<view class="logo">
 				<image class="headlogo" src="/static/icon/head.png" mode=""></image>
 			</view>
@@ -22,10 +22,10 @@
 			<!-- 右侧列表 -->
 			<scroll-view scroll-y="true" class="scroll-Y scroll-Y-R">
 				<view class="scroll-view-item rightList" v-for="(item,index) in lists" :key="index">
-					<view class="tipImg">
+					<view class="tipImg" @click="goProduct()">
 						<image class="imgs" src="/static/icon/head.png" mode=""></image>
 					</view>
-					<view class="msg">
+					<view class="msg" @click="goProduct()">
 						<view class="tit">
 							{{item.title}}
 						</view>
@@ -34,7 +34,7 @@
 						</view>
 					</view>
 					<view class="add" @click="showModalClick()">
-						<image class="addimg" src="/static/icon/shop2.png" mode=""></image>
+						<image class="addimg" src="/static/icon/shop1.png" mode=""></image>
 					</view>
 				</view>
 			</scroll-view>
@@ -341,6 +341,16 @@
 						return item.id == id
 					})[0].children
 				}
+			},
+			//点击跳转到商品详情
+			goProduct:function(){
+				uni.showToast({
+					icon:"loading",
+					title:"loading..."
+				})
+				uni.navigateTo({
+					url:"/pages/product/product"
+				})
 			}
 		}
 	}
@@ -353,8 +363,9 @@
 		padding: 40upx 20upx;
 		box-sizing: border-box;
 		height: 223upx;
-		color: #fff;
 		font-size: 32upx;
+		background-color: #FFFFFF;
+		border-bottom: 1px solid #f5f5f5;
 	}
 	.topMsg .logo{
 		position: relative;
@@ -392,7 +403,6 @@
 	.main{
 		height: 100%;
 		overflow: hidden;
-		border-top: 1px solid #FFFFFF;
 	}
 	.scroll-Y-L{
 		width: 25%;
@@ -477,8 +487,8 @@
 	}
 	
 	.scroll-Y-R .rightList .add .addimg{
-		width: 30upx;
-		height: 30upx;
+		width: 50upx;
+		height: 50upx;
 	}
 	.modal{
 		width: 100%;

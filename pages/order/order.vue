@@ -136,6 +136,7 @@
 		display: flex;
 		text-align: center;
 		box-shadow: 1px 1px 5px #CCCCCC;
+		background-color: #FFFFFF;
 	}
 
 	.headerNav .navLists {

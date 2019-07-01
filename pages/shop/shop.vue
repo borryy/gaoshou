@@ -4,12 +4,12 @@
 			<view class="mapIcon">
 				<image class="mapImg" src="/static/icon/map.png" mode=""></image>
 			</view>
-			<view class="addressMsg" v-if="addrLe">
+			<view class="addressMsg" v-if="hope_job!=''">
 				<view class="names">
-					白云飞
+					{{hope_job.userName}} - {{hope_job.userPhone}}
 				</view>
 				<view class="addrM">
-					河北省石家庄市长安区博雅盛世1号楼一单元1101
+					{{hope_job.addr}} {{hope_job.addrM}}
 				</view>
 			</view>
 			<view class="addressMsg" v-else>
@@ -142,6 +142,7 @@
 			return {
 				addrLe: true,
 				timeLe: true,
+				hope_job:'',
 				num:2,
 				resultInfo:{
 					result:"配送/服务日期（必填）"
@@ -152,7 +153,17 @@
 			uni.setNavigationBarTitle({
 			　　title:'购物车'
 			})
+			console.log(this.hope_job)
 		},
+		onShow:function(e){
+		       let pages = getCurrentPages();
+		       let currPage = pages[pages.length-1];
+		       if (currPage.data.hope_job==""){
+		            
+		        }else{
+		            this.hope_job = JSON.parse(currPage.data.hope_job)
+		        }
+		 },
 		methods: {
 			//增加规格数量
 			addNum:function(){

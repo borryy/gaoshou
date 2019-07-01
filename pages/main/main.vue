@@ -90,9 +90,10 @@
 		left: 0;
 		display: flex;
 		text-align: center;
-		background-color: #CA0C16;
 		box-sizing: border-box;
 		line-height: 1;
+		background-color: #FFFFFF;
+		border-top: 1px solid #f5f5f5;
 	}
 	.tabBars .navList{
 		width: 33.33%;
@@ -112,11 +113,10 @@
 		height: 100%;
 	}
 	.tabBars .navList .title{
-		color: #FFFFFF;
 		font-size: 26upx;
 	}
 	.tabBars .navList.active .title{
-		color: #FFA600;
+		color: #CA0C16;
 	}
 	
 </style>

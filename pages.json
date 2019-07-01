@@ -8,34 +8,44 @@
 		},
 		{
 			"path": "pages/shop/shop"
-			
+
 		},
 		{
 			"path": "pages/center/center",
 			"style": {
-			    "navigationBarTitleText": "个人中心"
+				"navigationBarTitleText": "个人中心"
 			}
-			
+
 		},
 		{
 			"path": "pages/address/address"
-			
+
 		},
 		{
 			"path": "pages/order/order",
 			"style": {
-                "navigationBarTitleText": "我的订单",
-                "enablePullDownRefresh": true,
-				"backgroundTextStyle": "light"
-            }
-			
+				"navigationBarTitleText": "我的订单"
+			}
+
+		},
+		{
+			"path": "pages/product/product",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "高守施工",
-		"navigationBarBackgroundColor": "#ca0c16",
-		"backgroundColor": "#ca0c16"
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+		}
 	}
 	// "tabBar": {
 	// 	"color": "#FFFFFF",

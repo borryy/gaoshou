@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="centerTop mainBackColor">
+		<view class="centerTop">
 			<view class="centerHead">
 				<image src="/static/logo.png" mode=""></image>
 			</view>
@@ -17,11 +17,11 @@
 			<uni-list class="fs28">
 				 <uni-list-item title="地址信息" 
 					:show-extra-icon="true" 
-					:extra-icon="{color: '#ccc',size: '22',type: 'map'}">
+					:extra-icon="{color: '#ca0c16',size: '22',type: 'map'}">
 				</uni-list-item>
 				<uni-list-item title="我的订单" 
 					:show-extra-icon="true" 
-					:extra-icon="{color: '#ccc',size: '22',type: 'search'}" @click="goOrder()">
+					:extra-icon="{color: '#ca0c16',size: '22',type: 'search'}" @click="goOrder()">
 				</uni-list-item>
 			</uni-list>
 		</view>
@@ -62,6 +62,8 @@
 		box-sizing: border-box;
 		display: flex;
 		align-items: center;
+		/* color: #FFFFFF; */
+		background-color: #FFFFFF;
 	}
 	.centerTop .centerHead{
 		width: 100upx;
