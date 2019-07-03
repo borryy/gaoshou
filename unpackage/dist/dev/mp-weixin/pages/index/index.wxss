@@ -50,7 +50,7 @@
 }
 .main.data-v-348302ce{
 	height: 100%;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .scroll-Y-L.data-v-348302ce{
 	width: 25%;
@@ -92,7 +92,6 @@
 	right: 0;
 	background-color: #FFFFFF;
 	padding-bottom: 100rpx;
-	white-space:nowrap;
 }
 .scroll-Y-R .rightList.data-v-348302ce{
 	font-size: 28rpx;
@@ -127,9 +126,21 @@
 .scroll-Y-R .rightList .msg view.data-v-348302ce{
 	line-height: 1.8;
 }
+.scroll-Y-R .rightList .msg .tit.data-v-348302ce{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+}
 .scroll-Y-R .rightList .msg .small.data-v-348302ce{
 	font-size: 24rpx;
 	color: #555555;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	line-height: 1.2;
+	margin-top: 10rpx;
 }
 .scroll-Y-R .rightList .add.data-v-348302ce{
 	width: 20%;

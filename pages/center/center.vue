@@ -17,7 +17,7 @@
 			<uni-list class="fs28">
 				 <uni-list-item title="地址信息" 
 					:show-extra-icon="true" 
-					:extra-icon="{color: '#ca0c16',size: '22',type: 'map'}">
+					:extra-icon="{color: '#ca0c16',size: '22',type: 'map'}" @click="goAddress()">
 				</uni-list-item>
 				<uni-list-item title="我的订单" 
 					:show-extra-icon="true" 
@@ -50,6 +50,15 @@
 				})
 				uni.navigateTo({
 					url:"/pages/order/order"
+				})
+			},
+			goAddress:function(){
+				uni.showToast({
+					icon:"loading",
+					title:"loading..."
+				})
+				uni.navigateTo({
+					url:"/pages/myAddress/myAddress"
 				})
 			}
 		}

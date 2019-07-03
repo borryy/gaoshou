@@ -39,7 +39,8 @@
 		</view>
 		<w-picker mode="limit" dayStep="30" step="1"  :current="true" @confirm="onConfirm" ref="picker" themeColor="#f00"></w-picker>
 		<view class="productMain">
-			<view class="pList">
+			
+			<view class="pList" v-for="(item,index) in cartList" :key="index">
 				<view class="pRadio parent">
 					<image class="rad son" src="/static/icon/choose.png" mode=""></image>
 				</view>
@@ -48,66 +49,21 @@
 				</view>
 				<view class="pMain">
 					<view class="pTitle">
-						美式美缝剂胶（蓝白色）
+						{{item.goodsName}}（{{item.goodsSpecName}}）
 					</view>
 					<view class="pNum">
 						<view class="addNum">
-							<uni-icon type="minus" color="#ca0c16" size="20" @click="minusNum()"></uni-icon>
-							<input type="number" v-model="num">
-							<uni-icon type="plus" color="#ca0c16" size="20" @click="addNum()"></uni-icon>
+							<uni-icon type="minus" color="#ca0c16" size="20" @click="minusNum(index)"></uni-icon>
+							<input type="number" v-model="item.num">
+							<uni-icon type="plus" color="#ca0c16" size="20" @click="addNum(index)"></uni-icon>
 						</view>
 					</view>
 				</view>
 				<view class="pPrice">
-					￥62
+					￥{{priceShow}}
 				</view>
 			</view>
-			<view class="pList">
-				<view class="pRadio parent">
-					<image class="rad son" src="/static/icon/choose.png" mode=""></image>
-				</view>
-				<view class="pImg parent">
-					<image class="im son" src="/static/icon/head.png" mode=""></image>
-				</view>
-				<view class="pMain">
-					<view class="pTitle">
-						美式美缝剂胶（蓝白色）
-					</view>
-					<view class="pNum">
-						<view class="addNum">
-							<uni-icon type="minus" color="#ca0c16" size="20" @click="minusNum()"></uni-icon>
-							<input type="number" v-model="num">
-							<uni-icon type="plus" color="#ca0c16" size="20" @click="addNum()"></uni-icon>
-						</view>
-					</view>
-				</view>
-				<view class="pPrice">
-					￥62
-				</view>
-			</view>
-			<view class="pList">
-				<view class="pRadio parent">
-					<image class="rad son" src="/static/icon/choose.png" mode=""></image>
-				</view>
-				<view class="pImg parent">
-					<image class="im son" src="/static/icon/head.png" mode=""></image>
-				</view>
-				<view class="pMain">
-					<view class="pTitle">
-						美式美缝剂胶（蓝白色）
-					</view>
-					<view class="pNum">
-						<view class="addNum">
-							<uni-icon type="minus" color="#ca0c16" size="20" @click="minusNum()"></uni-icon>
-							<input type="number" v-model="num">
-							<uni-icon type="plus" color="#ca0c16" size="20" @click="addNum()"></uni-icon>
-						</view>
-					</view>
-				</view>
-				<view class="pPrice">
-					￥62
-				</view>
-			</view>
+			
 			<view class="pList">
 				<view class="pZhu">
 					人工费
@@ -132,7 +88,6 @@
 <script>
 	import uniIcon from '@/components/uni-icon/uni-icon.vue';
 	import wPicker from "@/components/w-picker/w-picker.vue";
-	
 	export default {
 		components: {
 			uniIcon,
@@ -144,16 +99,20 @@
 				timeLe: true,
 				hope_job:'',
 				num:2,
+				cartType:'',
+				cartList:[],
 				resultInfo:{
 					result:"配送/服务日期（必填）"
 				}
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			uni.setNavigationBarTitle({
 			　　title:'购物车'
 			})
-			console.log(this.hope_job)
+			this.cartType = options.type
+			// console.log(options.type)
+			this.queryCartList('34cf8b92ad0746a9ab476735e36797e7');
 		},
 		onShow:function(e){
 		       let pages = getCurrentPages();
@@ -166,16 +125,43 @@
 		 },
 		methods: {
 			//增加规格数量
-			addNum:function(){
-				this.num=parseInt(this.num)+1
+			addNum:function(index){
+				this.cartList[index].num=parseInt(this.cartList[index].num)+1
 			},
 			//减少规格数量
-			minusNum:function(){
-				if(this.num<1){
-					this.num = 0
+			minusNum:function(index){
+				if(this.cartList[index].num<1){
+					this.cartList[index].num = 0
 				}else{
-					this.num=parseInt(this.num)-1
+					this.cartList[index].num=parseInt(this.cartList[index].num)-1
 				}
+			},
+			//查看购物车列表
+			queryCartList:function(userCode){
+				var that = this;
+				uni.request({
+					method: 'GET',
+					url: that.websiteUrl + '/cart/queryCartList', 
+					data: {
+						userCode:userCode,
+					},
+					success: (res) => {
+						if(res.data.success){
+							if(that.cartType == 1){
+								that.cartList = res.data.data.rows
+							}else{
+								that.cartList = res.data.data.rows[res.data.data.total-1]
+							}
+							console.log(that.cartList)
+						}else{
+							uni.showToast({
+								icon:"none",
+								title:res.data.msg
+							})
+						}
+						
+					}
+				});
 			},
 			goAddress:function(){
 				uni.showToast({
@@ -184,7 +170,7 @@
 				})
 				uni.navigateTo({
 					url:"/pages/address/address"
-				})
+				}) 
 			},
 			toggleTab:function() {
 				this.$refs.picker.show();
@@ -273,17 +259,22 @@
 		overflow: hidden;
 	}
 	.productMain .pList .pMain{
-		width: 60%;
+		width: 50%;
 		padding-left: 20upx;
 		line-height: 2;
 		box-sizing: border-box;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		overflow: hidden;
 	}
 	.productMain .pList .pMain .pNum{
 		font-size: 24upx;
 		color: #333333;
 	}
 	.productMain .pList .pPrice{
-		width: 10%;
+		width: 20%;
+		text-align: right;
 	}
 	.productMain .addNum{
 		display: flex;

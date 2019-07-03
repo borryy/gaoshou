@@ -98,51 +98,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
   components: {
     uniIcon: uniIcon,
@@ -154,16 +109,20 @@
       timeLe: true,
       hope_job: '',
       num: 2,
+      cartType: '',
+      cartList: [],
       resultInfo: {
         result: "配送/服务日期（必填）" } };
 
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(options) {
     uni.setNavigationBarTitle({
       title: '购物车' });
 
-    console.log(this.hope_job);
+    this.cartType = options.type;
+    // console.log(options.type)
+    this.queryCartList('34cf8b92ad0746a9ab476735e36797e7');
   },
   onShow: function onShow(e) {
     var pages = getCurrentPages();
@@ -176,16 +135,43 @@
   },
   methods: {
     //增加规格数量
-    addNum: function addNum() {
-      this.num = parseInt(this.num) + 1;
+    addNum: function addNum(index) {
+      this.cartList[index].num = parseInt(this.cartList[index].num) + 1;
     },
     //减少规格数量
-    minusNum: function minusNum() {
-      if (this.num < 1) {
-        this.num = 0;
+    minusNum: function minusNum(index) {
+      if (this.cartList[index].num < 1) {
+        this.cartList[index].num = 0;
       } else {
-        this.num = parseInt(this.num) - 1;
+        this.cartList[index].num = parseInt(this.cartList[index].num) - 1;
       }
+    },
+    //查看购物车列表
+    queryCartList: function queryCartList(userCode) {
+      var that = this;
+      uni.request({
+        method: 'GET',
+        url: that.websiteUrl + '/cart/queryCartList',
+        data: {
+          userCode: userCode },
+
+        success: function success(res) {
+          if (res.data.success) {
+            if (that.cartType == 1) {
+              that.cartList = res.data.data.rows;
+            } else {
+              that.cartList = res.data.data.rows[res.data.data.total - 1];
+            }
+            console.log(that.cartList);
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg });
+
+          }
+
+        } });
+
     },
     goAddress: function goAddress() {
       uni.showToast({

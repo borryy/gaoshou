@@ -14,26 +14,27 @@
 		<view class="main">
 			<!-- 左侧分类 -->
 			<scroll-view scroll-y="true" class="scroll-Y scroll-Y-L" >
-				<view class="scroll-view-item listTitle mainBackColor">高守施工</view>
-				<view class="scroll-view-item listm" :class="titleId == item.id?'active':''" @click="changeItem(item.id,item.pid)" v-for="item in mainList1" :key="item.id">{{item.title}}</view>
-				<view class="scroll-view-item listTitle mainBackColor">高守精选</view>
-				<view class="scroll-view-item listm" :class="titleId == item.id?'active':''" @click="changeItem(item.id,item.pid)" v-for="item in mainList2" :key="item.id">{{item.title}}</view>
+				<view class="scrollMain" v-for="it in mainList" :key="it.id">
+					<view class="scroll-view-item listTitle mainBackColor">{{it.name}}</view>
+					<view class="scroll-view-item listm" :class="titleId == item.id?'active':''" @click="changeItem(item.id)" v-for="item in it.children" :key="item.id">{{item.name}}</view>
+				</view>
 			</scroll-view>
 			<!-- 右侧列表 -->
 			<scroll-view scroll-y="true" class="scroll-Y scroll-Y-R">
 				<view class="scroll-view-item rightList" v-for="(item,index) in lists" :key="index">
 					<view class="tipImg" @click="goProduct()">
+						<!-- <image class="imgs" :src="item.fileUrl" mode=""></image> -->
 						<image class="imgs" src="/static/icon/head.png" mode=""></image>
 					</view>
 					<view class="msg" @click="goProduct()">
 						<view class="tit">
-							{{item.title}}
+							{{item.name}}
 						</view>
 						<view class="small">
-							{{item.small}}
+							{{item.details}}
 						</view>
 					</view>
-					<view class="add" @click="showModalClick()">
+					<view class="add" @click="showModalClick(index)">
 						<image class="addimg" src="/static/icon/shop1.png" mode=""></image>
 					</view>
 				</view>
@@ -43,23 +44,24 @@
 				<view class="modalMain">
 					<view class="modalTop">
 						<view class="topImgv">
-							<image class="topImg" :src="colorActive.img" mode=""></image>
+							<image class="topImg" src="/static/icon/head.png" mode=""></image>
+							<!-- <image class="topImg" :src="modal.fileUrl" mode=""></image> -->
 						</view>
 						<view class="topMsgm">
 							<view class="title">
-								美缝产品
+								{{modal.name}}
 							</view>
 							<view class="small">
-								68 <text class="sm">元</text>
+								{{modal.priceShow}} <text class="sm">元</text>
 							</view>
 							<view class="pcont">
-								已选:{{colorActive.title}} <text v-if="num>0">× {{num}}</text>
+								已选:{{colorActive.name}} <text v-if="num>0">× {{num}}</text>
 							</view>
 						</view>
 					</view>
 					<view class="modalCenter">
 						<view class="listColor" :class="colorOn == indexs?'on':''" @click="colorOnClick(indexs)" v-for="(item,indexs) in colorList" :key="indexs">
-							{{item.title}}
+							{{item.name}}
 						</view>
 					</view>
 					<view class="modalNum">
@@ -81,7 +83,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="modalUnder" @click="showModalClick()"></view>
+				<view class="modalUnder" @click="showModalClick('s')"></view>
 			</view>
 		</view>
 	</view>
@@ -94,195 +96,103 @@
 		data() { 
 			return { 
 				titleId: '',
-				mainList1:[],
-				mainList2:[],
 				lists:[],
-				num:0, 
-				colorOn:'0',
+				num:1, 
+				colorOn:0,
 				colorActive:{},
-				colorList:[
-					{title:'蓝白色',img:'/static/logo.png'},
-					{title:'蓝黑色',img:'/static/icon/head.png'},
-					{title:'蓝绿色',img:'/static/logo.png'},
-					{title:'蓝白色',img:'/static/icon/head.png'},
-					{title:'蓝黑色',img:'/static/logo.png'},
-					{title:'蓝绿色',img:'/static/icon/head.png'}
-				],
+				colorList:[],
 				showModal:false,
-				mainList:[
-					{
-						"title":"高守施工",
-						"children":[
-							{
-								"id":"1",
-								"pid":"1",
-								"title":"高守美缝",
-								"children":[
-									{
-										"id":"100",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"101",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"102",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"103",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"104",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"105",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"106",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"107",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									},
-									{
-										"id":"108",
-										"title":"清包美缝服务",
-										"small":"只包含人工费，每小时30元"
-									}
-								]
-							},
-							{
-								"id":"2",
-								"pid":"1",
-								"title":"高守防水",
-								"children":[
-									{
-										"id":"100",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"101",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"102",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"103",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"104",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"105",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"106",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"107",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									},
-									{
-										"id":"108",
-										"title":"清包防水服务",
-										"small":"只包含人工费，每小时100元"
-									}
-								]
-							}
-						]
-					},
-					{
-						"title":"高守精品",
-						"children":[
-							{
-								"id":"3",
-								"pid":"2",
-								"title":"美缝剂胶",
-								"children":[]
-							},
-							{
-								"id":"4",
-								"pid":"2",
-								"title":"防水用品",
-								"children":[]
-							},
-							{
-								"id":"5",
-								"pid":"2",
-								"title":"美缝剂胶",
-								"children":[]
-							},
-							{
-								"id":"6",
-								"pid":"2",
-								"title":"防水用品",
-								"children":[]
-							},
-							{
-								"id":"7",
-								"pid":"2",
-								"title":"美缝剂胶",
-								"children":[]
-							},
-							{
-								"id":"8",
-								"pid":"2",
-								"title":"防水用品",
-								"children":[]
-							},
-							{
-								"id":"9",
-								"pid":"2",
-								"title":"美缝剂胶",
-								"children":[]
-							}
-						]
-					},
-				]
+				modal:{},
+				mainList:[]
 			}
 		},
 		mounted() {
-			var that = this
-			this.titleId = this.mainList[0].children[0].id;
-			this.mainList1 = this.mainList[0].children;
-			this.mainList2 = this.mainList[1].children; 
-			this.lists = this.mainList1.filter(function(item){
-				return item.id == that.titleId
-			})[0].children;
-			this.colorActive = this.colorList[this.colorOn];
+			this.queryTypeTree();
 		},
 		methods: {
+			//获取商品类型
+			queryTypeTree:function(){
+				var that = this;
+				uni.request({
+					method: 'GET',
+					url: that.websiteUrl + '/goodsType/queryTypeTree', 
+					data: {
+						
+					},
+					success: (res) => {
+						if(res.data.success){
+							that.mainList = res.data.data;
+							that.titleId = that.mainList[0].children[0].id;
+							that.queryGoodByType();
+						}else{
+							uni.showToast({
+								icon:"none",
+								title:res.data.msg
+							})
+						}
+						
+					}
+				});
+			},
+			//根据类型获取商品列表
+			queryGoodByType:function(){
+				var that = this;
+				uni.request({
+					method: 'GET',
+					url: that.websiteUrl + '/goods/queryGoodsList', 
+					data: {
+						typeId:that.titleId
+					},
+					success: (res) => {
+						if(res.data.success){
+							that.lists = res.data.data.rows;
+							
+						}else{
+							uni.showToast({
+								icon:"none",
+								title:res.data.msg
+							})
+						}
+						
+					}
+				});
+			},
+			//查询当前商品的规格
+			queryGoodsSpecList:function(goodCode){
+				var that = this;
+				uni.request({
+					method: 'GET',
+					url: that.websiteUrl + '/goodsSpec/queryGoodsSpecList', 
+					data: {
+						goodCode:goodCode
+					},
+					success: (res) => {
+						if(res.data.success){
+							that.colorList = res.data.data.rows;
+							that.colorActive = that.colorList[that.colorOn];
+							// console.log(that.colorActive)
+							// console.log(that.colorList)
+						}else{
+							uni.showToast({
+								icon:"none",
+								title:res.data.msg
+							})
+						}
+						
+					}
+				});
+			},
 			//显示选择规格底部弹框
-			showModalClick:function(){
-				this.showModal = !this.showModal
+			showModalClick:function(index){
+				var that = this;
+				if(index!='s'){
+					that.showModal = !that.showModal;
+					that.modal = that.lists[index];
+					
+					that.queryGoodsSpecList(that.modal.goodsCode);
+				}else{
+					that.showModal = !that.showModal
+				}
 			},
 			//选择规格按钮事件
 			colorOnClick:function(index){
@@ -307,10 +217,7 @@
 					icon:"loading",
 					title:"loading..."
 				})
-				this.showModalClick();
-				uni.navigateTo({
-					url:"/pages/shop/shop"
-				})
+				this.insertCart('34cf8b92ad0746a9ab476735e36797e7','1221212',this.modal.goodsCode,this.colorActive.id,this.num,2)
 			},
 			//底部弹框加入购物车
 			addShop:function(){
@@ -320,27 +227,56 @@
 						icon:"none"
 					})
 				}else{
-					uni.showToast({
-						title:"加入购物车成功！",
-						icon:"none"
-					})
+					this.insertCart('34cf8b92ad0746a9ab476735e36797e7','1221212',this.modal.goodsCode,this.colorActive.id,this.num,1)
 				}
-				setTimeout(function(){
-					uni.hideToast()
-				},1500)
+				
 			},
+			//加入购物车请求
+			insertCart:function(userCode,shopCode,goodsCode,specId,num,type){
+				var that = this;
+				uni.request({
+					method: 'POST',
+					header:{"content-type": "application/x-www-form-urlencoded"},
+					url: that.websiteUrl + '/cart/insertCart', 
+					data: {
+						userCode:userCode,
+						shopCode:shopCode,
+						goodsCode:goodsCode,
+						specId:specId,
+						num:num
+					},
+					success: (res) => {
+						if(res.data.success){
+							that.showModal = !that.showModal
+							if(type == '1'){
+								uni.showToast({
+									title:"加入购物车成功！",
+									icon:"none"
+								})
+								setTimeout(function(){
+									uni.hideToast()
+								},1500)
+							}else{
+								uni.navigateTo({
+									url:"/pages/shop/shop?type="+type
+								})
+							}
+							
+						}else{
+							uni.showToast({
+								icon:"none",
+								title:res.data.msg
+							})
+						}
+						
+					}
+				});
+			},
+			
 			//侧边栏点击分类事件
-			changeItem:function(id,pid){
+			changeItem:function(id){
 				this.titleId = id
-				if(pid == 1){
-					this.lists = this.mainList1.filter(function(item){
-						return item.id == id
-					})[0].children
-				}else{
-					this.lists = this.mainList2.filter(function(item){
-						return item.id == id
-					})[0].children
-				}
+				this.queryGoodByType();
 			},
 			//点击跳转到商品详情
 			goProduct:function(){
@@ -402,7 +338,7 @@
 	}
 	.main{
 		height: 100%;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 	.scroll-Y-L{
 		width: 25%;
@@ -444,7 +380,6 @@
 		right: 0;
 		background-color: #FFFFFF;
 		padding-bottom: 100upx;
-		white-space:nowrap;
 	}
 	.scroll-Y-R .rightList{
 		font-size: 28upx;
@@ -474,9 +409,21 @@
 	.scroll-Y-R .rightList .msg view{
 		line-height: 1.8;
 	}
+	.scroll-Y-R .rightList .msg .tit{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		overflow: hidden;
+	}
 	.scroll-Y-R .rightList .msg .small{
 		font-size: 24upx;
 		color: #555555;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		line-height: 1.2;
+		margin-top: 10upx;
 	}
 	.scroll-Y-R .rightList .add{
 		width: 20%;

@@ -1,57 +1,19 @@
 <template>
 	<view class="content">
-		<view class="headerNav">
-			<view class="navLists" @click="changeNav(index)" :class="actIndex == index?'active':''" v-for="(item,index) in navList"
-			 :key="index">
-				{{item}}
+		<view class="topAddress">
+			<view class="addressImg parent">
+				<image class="son" src="/static/icon/map.png" mode=""></image>
+			</view>
+			<view class="addressMsgs">
+				<view class="listA">
+					收货人：白云飞 15901133192
+				</view>
+				<view class="listB">
+					收货地址：河北省石家庄市长安区
+				</view>
 			</view>
 		</view>
 		<view class="orderMain">
-			<view class="orderList" @click="goDetail">
-				<view class="orderTop">
-					<view class="orderTime">
-						日期:2019-05-05 10:22:00
-					</view>
-					<view class="orderStatus">
-						<text>已完成</text>
-					</view>
-				</view>
-				<view class="orderProduct">
-					<view class="productImg parent">
-						<image class="son" src="/static/logo.png" mode=""></image>
-					</view>
-					<view class="productMsg">
-						<view class="productTitle">
-							美缝剂胶
-						</view>
-						<view class="productSmall">
-							蓝白色
-						</view>
-						<view class="productSmall">
-							人工费：10.00元
-						</view>
-					</view>
-					<view class="productPrice">
-						<view class="productTitle">
-							￥200.00
-						</view>
-						<view class="productSmall">
-							× 2
-						</view>
-						<view class="productTitle">
-							合计：￥410.00
-						</view>
-					</view>
-				</view>
-				<view class="orderHandle">
-					<view class="handleList">
-						删除订单
-					</view>
-					<view class="handleList">
-						再次下单
-					</view>
-				</view>
-			</view>
 			<view class="orderList">
 				<view class="orderTop">
 					<view class="orderTime">
@@ -97,7 +59,32 @@
 					</view>
 				</view>
 			</view>
-
+			
+		</view>
+		<view class="tipMsg">
+			<view class="tipTitle">
+				交易快照 发生交易争执时，可作为判断依据
+			</view>
+			<view class="tipList">
+				订单编号：29456465656564455
+			</view>
+			<view class="tipList">
+				创建时间：2019-04-21 23:00:00
+			</view>
+			<view class="tipList">
+				施工/发货时间：2019-04-21 23:00:00
+			</view>
+			<view class="tipList">
+				成交时间：2019-04-21 23:00:00
+			</view>
+			<view class="make">
+				<view class="makeList">
+					申请售后
+				</view>
+				<view class="makeList">
+					拨打电话
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -126,46 +113,19 @@
 		methods: {
 			changeNav: function(index) {
 				this.actIndex = index
-			},
-			goDetail: function(){
-				uni.showToast({
-					icon:"loading",
-					title:"loading..."
-				})
-				uni.navigateTo({
-					url:"/pages/orderDetail/orderDetail"
-				})
 			}
 		}
 	}
 </script>
 
 <style scoped>
-	.headerNav {
-		display: flex;
-		text-align: center;
-		box-shadow: 1px 1px 5px #CCCCCC;
-		background-color: #FFFFFF;
-	}
-
-	.headerNav .navLists {
-		font-size: 28upx;
-		width: 25%;
-		padding: 30upx 0;
-		box-sizing: border-box;
-	}
-
-	.headerNav .navLists.active {
-		color: #CA0C16;
-		border-bottom: 1px solid #CA0C16;
-	}
-
+	
 	.orderList {
-		border-bottom: 20upx solid #EEEEEE;
+		border-bottom: 10upx solid #EEEEEE; 
 	}
 
 	.orderMain {
-		margin-top: 20upx;
+		margin-top: 10upx;
 		background-color: #FFFFFF;
 	}
 
@@ -236,5 +196,58 @@
 		margin-left: 20upx;
 		border: 1px solid #EEEEEE;
 		align-self: flex-end;
+	}
+	.topAddress{
+		padding: 30upx;
+		display: flex;
+		box-sizing: border-box;
+		background-color: #FFFFFF;
+		align-items: center;
+		margin-top: 10upx;
+	}
+	.topAddress .addressImg{
+		width: 5%;
+		padding-bottom: 5%;
+	}
+	.topAddress .addressMsgs{
+		padding-left: 20upx;
+	}
+	.topAddress .addressMsgs .listA{
+		margin-bottom: 14upx;
+		font-size: 28upx;
+	}
+	.topAddress .addressMsgs .listB{
+		font-size: 28upx;
+		color: #333333;
+	}
+	.tipMsg{
+		background-color: #FFFFFF;
+		padding: 30upx;
+		padding-bottom: 0;
+	}
+	.tipMsg .tipTitle{
+		font-size: 28upx;
+		color:#333333;
+		line-height: 1.5;
+	}
+	.tipMsg .tipList{
+		font-size: 26upx;
+		color: #444444;
+		line-height: 1.8;
+	}
+	.tipMsg .make{
+		padding: 20upx;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+	}
+	.tipMsg .makeList{
+		width: 30%;
+		padding: 20upx;
+		margin: 10upx;
+		font-size: 26upx;
+		text-align: center;
+		border: 1px solid #f5f5f5;
+		border-radius: 10upx;
 	}
 </style>

@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "index": "/pages/index/index",
-    "center": "/pages/center/center"
+    "center": "/pages/center/center",
+    "shop-index": "/pages/shopIndex/shopIndex",
+    "order": "/pages/order/order"
   }
 }

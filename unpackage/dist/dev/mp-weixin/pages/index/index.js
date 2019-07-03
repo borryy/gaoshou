@@ -99,200 +99,110 @@
 
 
 
+
+
 {
   components: { uniIcon: uniIcon },
   data: function data() {
     return {
       titleId: '',
-      mainList1: [],
-      mainList2: [],
       lists: [],
-      num: 0,
-      colorOn: '0',
+      num: 1,
+      colorOn: 0,
       colorActive: {},
-      colorList: [
-      { title: '蓝白色', img: '/static/logo.png' },
-      { title: '蓝黑色', img: '/static/icon/head.png' },
-      { title: '蓝绿色', img: '/static/logo.png' },
-      { title: '蓝白色', img: '/static/icon/head.png' },
-      { title: '蓝黑色', img: '/static/logo.png' },
-      { title: '蓝绿色', img: '/static/icon/head.png' }],
-
+      colorList: [],
       showModal: false,
-      mainList: [
-      {
-        "title": "高守施工",
-        "children": [
-        {
-          "id": "1",
-          "pid": "1",
-          "title": "高守美缝",
-          "children": [
-          {
-            "id": "100",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "101",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "102",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "103",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "104",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "105",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "106",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "107",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" },
-
-          {
-            "id": "108",
-            "title": "清包美缝服务",
-            "small": "只包含人工费，每小时30元" }] },
-
-
-
-        {
-          "id": "2",
-          "pid": "1",
-          "title": "高守防水",
-          "children": [
-          {
-            "id": "100",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "101",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "102",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "103",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "104",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "105",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "106",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "107",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" },
-
-          {
-            "id": "108",
-            "title": "清包防水服务",
-            "small": "只包含人工费，每小时100元" }] }] },
-
-
-
-
-
-      {
-        "title": "高守精品",
-        "children": [
-        {
-          "id": "3",
-          "pid": "2",
-          "title": "美缝剂胶",
-          "children": [] },
-
-        {
-          "id": "4",
-          "pid": "2",
-          "title": "防水用品",
-          "children": [] },
-
-        {
-          "id": "5",
-          "pid": "2",
-          "title": "美缝剂胶",
-          "children": [] },
-
-        {
-          "id": "6",
-          "pid": "2",
-          "title": "防水用品",
-          "children": [] },
-
-        {
-          "id": "7",
-          "pid": "2",
-          "title": "美缝剂胶",
-          "children": [] },
-
-        {
-          "id": "8",
-          "pid": "2",
-          "title": "防水用品",
-          "children": [] },
-
-        {
-          "id": "9",
-          "pid": "2",
-          "title": "美缝剂胶",
-          "children": [] }] }] };
-
-
-
-
+      modal: {},
+      mainList: [] };
 
   },
   mounted: function mounted() {
-    var that = this;
-    this.titleId = this.mainList[0].children[0].id;
-    this.mainList1 = this.mainList[0].children;
-    this.mainList2 = this.mainList[1].children;
-    this.lists = this.mainList1.filter(function (item) {
-      return item.id == that.titleId;
-    })[0].children;
-    this.colorActive = this.colorList[this.colorOn];
+    this.queryTypeTree();
   },
   methods: {
+    //获取商品类型
+    queryTypeTree: function queryTypeTree() {
+      var that = this;
+      uni.request({
+        method: 'GET',
+        url: that.websiteUrl + '/goodsType/queryTypeTree',
+        data: {},
+
+
+        success: function success(res) {
+          if (res.data.success) {
+            that.mainList = res.data.data;
+            that.titleId = that.mainList[0].children[0].id;
+            that.queryGoodByType();
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg });
+
+          }
+
+        } });
+
+    },
+    //根据类型获取商品列表
+    queryGoodByType: function queryGoodByType() {
+      var that = this;
+      uni.request({
+        method: 'GET',
+        url: that.websiteUrl + '/goods/queryGoodsList',
+        data: {
+          typeId: that.titleId },
+
+        success: function success(res) {
+          if (res.data.success) {
+            that.lists = res.data.data.rows;
+
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg });
+
+          }
+
+        } });
+
+    },
+    //查询当前商品的规格
+    queryGoodsSpecList: function queryGoodsSpecList(goodCode) {
+      var that = this;
+      uni.request({
+        method: 'GET',
+        url: that.websiteUrl + '/goodsSpec/queryGoodsSpecList',
+        data: {
+          goodCode: goodCode },
+
+        success: function success(res) {
+          if (res.data.success) {
+            that.colorList = res.data.data.rows;
+            that.colorActive = that.colorList[that.colorOn];
+            // console.log(that.colorActive)
+            // console.log(that.colorList)
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg });
+
+          }
+
+        } });
+
+    },
     //显示选择规格底部弹框
-    showModalClick: function showModalClick() {
-      this.showModal = !this.showModal;
+    showModalClick: function showModalClick(index) {
+      var that = this;
+      if (index != 's') {
+        that.showModal = !that.showModal;
+        that.modal = that.lists[index];
+
+        that.queryGoodsSpecList(that.modal.goodsCode);
+      } else {
+        that.showModal = !that.showModal;
+      }
     },
     //选择规格按钮事件
     colorOnClick: function colorOnClick(index) {
@@ -317,10 +227,7 @@
         icon: "loading",
         title: "loading..." });
 
-      this.showModalClick();
-      uni.navigateTo({
-        url: "/pages/shop/shop" });
-
+      this.insertCart('34cf8b92ad0746a9ab476735e36797e7', '1221212', this.modal.goodsCode, this.colorActive.id, this.num, 2);
     },
     //底部弹框加入购物车
     addShop: function addShop() {
@@ -330,27 +237,56 @@
           icon: "none" });
 
       } else {
-        uni.showToast({
-          title: "加入购物车成功！",
-          icon: "none" });
+        this.insertCart('34cf8b92ad0746a9ab476735e36797e7', '1221212', this.modal.goodsCode, this.colorActive.id, this.num, 1);
+      }
 
-      }
-      setTimeout(function () {
-        uni.hideToast();
-      }, 1500);
     },
+    //加入购物车请求
+    insertCart: function insertCart(userCode, shopCode, goodsCode, specId, num, type) {
+      var that = this;
+      uni.request({
+        method: 'POST',
+        header: { "content-type": "application/x-www-form-urlencoded" },
+        url: that.websiteUrl + '/cart/insertCart',
+        data: {
+          userCode: userCode,
+          shopCode: shopCode,
+          goodsCode: goodsCode,
+          specId: specId,
+          num: num },
+
+        success: function success(res) {
+          if (res.data.success) {
+            that.showModal = !that.showModal;
+            if (type == '1') {
+              uni.showToast({
+                title: "加入购物车成功！",
+                icon: "none" });
+
+              setTimeout(function () {
+                uni.hideToast();
+              }, 1500);
+            } else {
+              uni.navigateTo({
+                url: "/pages/shop/shop?type=" + type });
+
+            }
+
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg });
+
+          }
+
+        } });
+
+    },
+
     //侧边栏点击分类事件
-    changeItem: function changeItem(id, pid) {
+    changeItem: function changeItem(id) {
       this.titleId = id;
-      if (pid == 1) {
-        this.lists = this.mainList1.filter(function (item) {
-          return item.id == id;
-        })[0].children;
-      } else {
-        this.lists = this.mainList2.filter(function (item) {
-          return item.id == id;
-        })[0].children;
-      }
+      this.queryGoodByType();
     },
     //点击跳转到商品详情
     goProduct: function goProduct() {

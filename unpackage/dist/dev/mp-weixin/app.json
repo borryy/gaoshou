@@ -6,7 +6,10 @@
     "pages/center/center",
     "pages/address/address",
     "pages/order/order",
-    "pages/product/product"
+    "pages/orderDetail/orderDetail",
+    "pages/product/product",
+    "pages/myAddress/myAddress",
+    "pages/shopIndex/shopIndex"
   ],
   "subPackages": [],
   "window": {
@@ -15,10 +18,11 @@
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#FFFFFF"
   },
-  "usingComponents": {},
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap97.json"
 }

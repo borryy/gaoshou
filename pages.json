@@ -29,24 +29,42 @@
 
 		},
 		{
+			"path": "pages/orderDetail/orderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		
+		},
+		{
 			"path": "pages/product/product",
 			"style": {
 				"navigationBarTitleText": "商品详情"
 			}
 		
-		}
+		},
+		{
+			"path": "pages/myAddress/myAddress",
+			"style": {
+				"navigationBarTitleText": "我的地址"
+			}
+		
+		},
+		{
+		 	"path": "pages/shopIndex/shopIndex"
+		} 
 	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "高守施工",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
-	},
-	"permission": {
-		"scope.userLocation": {
-			"desc": "你的位置信息将用于小程序位置接口的效果展示"
-		}
 	}
+	
 	// "tabBar": {
 	// 	"color": "#FFFFFF",
 	// 	"selectedColor": "#ffa600",
