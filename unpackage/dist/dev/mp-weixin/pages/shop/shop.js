@@ -97,7 +97,6 @@
 
 
 
-
 {
   components: {
     uniIcon: uniIcon,
@@ -160,7 +159,7 @@
             if (that.cartType == 1) {
               that.cartList = res.data.data.rows;
             } else {
-              that.cartList = res.data.data.rows[res.data.data.total - 1];
+              that.cartList.push(res.data.data.rows[res.data.data.total - 1]);
             }
             console.log(that.cartList);
           } else {

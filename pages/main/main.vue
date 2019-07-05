@@ -80,7 +80,7 @@
 		},
 		onLoad() {
 			this.pageNames = this.tabBar.list[0].pageName;
-			this.requestLogin();
+			// this.requestLogin();
 		},
 		methods: {
 			navGo: function(index) {

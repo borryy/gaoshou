@@ -467,7 +467,7 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
   },
   onLoad: function onLoad() {
     this.pageNames = this.tabBar.list[0].pageName;
-    this.requestLogin();
+    // this.requestLogin();
   },
   methods: {
     navGo: function navGo(index) {

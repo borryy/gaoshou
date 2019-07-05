@@ -72,7 +72,6 @@
 					进场后计算
 				</view>
 			</view>
-			
 		</view>
 		<view class="shopBottom">
 			<view class="sum bottomL">
@@ -150,7 +149,7 @@
 							if(that.cartType == 1){
 								that.cartList = res.data.data.rows
 							}else{
-								that.cartList = res.data.data.rows[res.data.data.total-1]
+								that.cartList.push(res.data.data.rows[res.data.data.total-1]) 
 							}
 							console.log(that.cartList)
 						}else{
@@ -265,7 +264,7 @@
 		box-sizing: border-box;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 1;
+		-webkit-line-clamp: 1; 
 		overflow: hidden;
 	}
 	.productMain .pList .pMain .pNum{
@@ -298,7 +297,7 @@
 	.shopBottom{
 		width: 100%;
 		height: 100upx;
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		left: 0;
 		display: flex;
