@@ -578,6 +578,7 @@
 	line-height: 96rpx;
 }
 .uni-tab-bar .active.data-v-6c13c692{
+	font-weight: bold;
 	border-bottom: 4rpx solid #CA0C16;
 }
 

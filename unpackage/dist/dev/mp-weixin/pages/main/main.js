@@ -1050,9 +1050,6 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
     uniIcon: uniIcon },
 
   data: function data() {
-    // return {
-    // 	navList: ['全部订单', '已付款', '已完成', '售后/退货']
-    // }
     return {
       page: {
         pageNum: 1,
@@ -1061,37 +1058,27 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
       scrollLeft: 0,
       isClickChange: false,
       tabIndex: 0,
-      newsitems: [{
-        name: '全部订单',
-        id: 'all' },
-      {
-        name: '待支付',
-        id: 'zhi' },
-      {
-        name: '已付款',
-        id: 'fu' },
-      {
-        name: '已完成',
-        id: 'wan' },
-      {
-        name: '售后/退货',
-        id: 'shou' }],
-
+      orders: [],
       tabBars: [{
         name: '全部订单',
-        id: 'all' },
+        id: 'all',
+        pid: 0 },
       {
         name: '待支付',
-        id: 'zhi' },
+        id: 'zhi',
+        pid: 0 },
       {
         name: '已付款',
-        id: 'fu' },
+        id: 'fu',
+        pid: 0 },
       {
         name: '已完成',
-        id: 'wan' },
+        id: 'wan',
+        pid: 0 },
       {
         name: '售后/退货',
-        id: 'shou' }],
+        id: 'shou',
+        pid: 0 }],
 
       contentText: {
         contentdown: '上拉加载更多',
@@ -1101,10 +1088,20 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
 
   },
   onLoad: function onLoad() {
-    this.getList();
+    this.initList();
   },
   methods: {
-    // 上滑加载更多
+    // 初始化订单列表
+    initList: function initList() {
+      this.orders = this.tabBars.map(function (item) {
+        return {
+          name: item.name,
+          pid: item.pid,
+          list: [] };
+
+      });
+      this.getList();
+    },
     // 获取订单列表
     getList: function getList() {
       var _this = this;
@@ -1116,6 +1113,9 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
         success: function success(res) {
           if (res.data.success) {
             console.log(res.data.data);
+            _this.orders.map(function (item) {
+              item.list = res.data.data.rows;
+            });
           }
         } });
 
@@ -1148,9 +1148,9 @@ var _default = { components: { Index: _index.default, Center: _center.default, s
         } });
 
     },
-    goDetail: function goDetail(e) {
+    goDetail: function goDetail(index) {
       uni.navigateTo({
-        url: '/pages/template/tabbar/detail/detail?title=' + e.title });
+        url: '/pages/orderDetail/orderDetail?orderid=' + index });
 
     },
     close: function close(index1, index2) {var _this2 = this;

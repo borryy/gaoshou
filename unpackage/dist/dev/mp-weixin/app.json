@@ -9,7 +9,8 @@
     "pages/orderDetail/orderDetail",
     "pages/product/product",
     "pages/myAddress/myAddress",
-    "pages/shopIndex/shopIndex"
+    "pages/shopIndex/shopIndex",
+    "pages/shop/confirmation/confirmation"
   ],
   "subPackages": [],
   "window": {
@@ -18,6 +19,5 @@
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#FFFFFF"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

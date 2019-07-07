@@ -14657,6 +14657,23 @@ createPage(_product.default);
 
 /***/ }),
 
+/***/ "../../../../../Desktop/gaoshou/main.js?{\"page\":\"pages%2Fshop%2Fconfirmation%2Fconfirmation\"}":
+/*!***************************************************************************************************!*\
+  !*** C:/Users/流苏晚晴/Desktop/gaoshou/main.js?{"page":"pages%2Fshop%2Fconfirmation%2Fconfirmation"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../Desktop/gaoshou/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _confirmation = _interopRequireDefault(__webpack_require__(/*! ./pages/shop/confirmation/confirmation.vue */ "../../../../../Desktop/gaoshou/pages/shop/confirmation/confirmation.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_confirmation.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../Desktop/gaoshou/main.js?{\"page\":\"pages%2Fshop%2Fshop\"}":
 /*!****************************************************************************!*\
   !*** C:/Users/流苏晚晴/Desktop/gaoshou/main.js?{"page":"pages%2Fshop%2Fshop"} ***!

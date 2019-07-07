@@ -59,8 +59,17 @@
 					</view>
 				</view>
 			</view>
-			
+
 		</view>
+
+		<view class="uni-timeline" style="padding: 30upx 20upx;background-color: #fff;">
+			<view v-for="(item, index) of logs" :key="index" class="uni-timeline-item" :class="{'uni-timeline-first-item': index === 0, 'uni-timeline-last-item': (index+1)===logs.length}">
+				<view class="uni-timeline-item-keynode">{{item.date}}</view>
+				<view class="uni-timeline-item-divider"></view>
+				<view class="uni-timeline-item-content">{{item.title}}</view>
+			</view>
+		</view>
+
 		<view class="tipMsg">
 			<view class="tipTitle">
 				交易快照 发生交易争执时，可作为判断依据
@@ -102,12 +111,33 @@
 		data() {
 			return {
 				actIndex: "0",
-				navList: ['全部订单', '已付款', '已完成', '售后/退货']
+				navList: ['全部订单', '已付款', '已完成', '售后/退货'],
+				logs: [{
+						title: "下单",
+						date: "2019.07.07 12:30"
+					},
+					{
+						title: "施工师傅接单",
+						date: "2019.07.07 12:30"
+					},
+					{
+						title: "施工师傅上门",
+						date: "2019.07.07 12:30"
+					},
+					{
+						title: "订单完成",
+						date: "2019.07.07 12:30"
+					},
+					{
+						title: "申请售后",
+						date: "2019.07.07 12:30"
+					}
+				]
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			uni.setNavigationBarTitle({
-				title: '我的订单'
+				title: '我的订单' + option.orderid
 			})
 		},
 		methods: {
@@ -119,9 +149,8 @@
 </script>
 
 <style scoped>
-	
 	.orderList {
-		border-bottom: 10upx solid #EEEEEE; 
+		border-bottom: 10upx solid #EEEEEE;
 	}
 
 	.orderMain {
@@ -197,7 +226,8 @@
 		border: 1px solid #EEEEEE;
 		align-self: flex-end;
 	}
-	.topAddress{
+
+	.topAddress {
 		padding: 30upx;
 		display: flex;
 		box-sizing: border-box;
@@ -205,43 +235,53 @@
 		align-items: center;
 		margin-top: 10upx;
 	}
-	.topAddress .addressImg{
+
+	.topAddress .addressImg {
 		width: 5%;
 		padding-bottom: 5%;
 	}
-	.topAddress .addressMsgs{
+
+	.topAddress .addressMsgs {
 		padding-left: 20upx;
 	}
-	.topAddress .addressMsgs .listA{
+
+	.topAddress .addressMsgs .listA {
 		margin-bottom: 14upx;
 		font-size: 28upx;
 	}
-	.topAddress .addressMsgs .listB{
+
+	.topAddress .addressMsgs .listB {
 		font-size: 28upx;
 		color: #333333;
 	}
-	.tipMsg{
+
+	.tipMsg {
 		background-color: #FFFFFF;
 		padding: 30upx;
 		padding-bottom: 0;
+		margin-bottom: 100upx;
 	}
-	.tipMsg .tipTitle{
+
+	.tipMsg .tipTitle {
 		font-size: 28upx;
-		color:#333333;
+		color: #333333;
 		line-height: 1.5;
 	}
-	.tipMsg .tipList{
+
+	.tipMsg .tipList {
 		font-size: 26upx;
 		color: #444444;
 		line-height: 1.8;
 	}
-	.tipMsg .make{
+
+	.tipMsg .make {
 		padding: 20upx;
 		box-sizing: border-box;
 		display: flex;
 		justify-content: center;
 	}
-	.tipMsg .makeList{
+
+	.tipMsg .makeList {
 		width: 30%;
 		padding: 20upx;
 		margin: 10upx;
@@ -249,5 +289,21 @@
 		text-align: center;
 		border: 1px solid #f5f5f5;
 		border-radius: 10upx;
+	}
+
+	.uni-timeline-item-keynode{
+		font-size: 24upx;
+		line-height: 1.5;
+		color: #999;
+	}
+	.uni-timeline-item-content{
+		padding-top: 20upx;
+		min-height: 100upx;
+	}
+	.uni-timeline-item .uni-timeline-item-divider {
+		background-color: #CA0C16;
+	}
+	.uni-timeline-last-item .uni-timeline-item-divider {
+		background-color: #999;
 	}
 </style>

@@ -10,8 +10,6 @@
 	"libVersion": "2.7.0",
 	"appid": "touristappid",
 	"projectname": "gaoshou",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -21,13 +19,24 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/main/main",
+					"scene": null
+				}
+			]
 		}
 	}
 }

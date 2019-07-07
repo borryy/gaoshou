@@ -5,15 +5,15 @@
 			 :id="tab.id" :data-current="index" @click="tapTab">{{tab.name}}</view>
 		</scroll-view>
 		<swiper :current="tabIndex" class="swiper-box swiper-content" :duration="300" @change="changeTab">
-			<swiper-item v-for="(tab,index1) in newsitems" :key="index1">
+			<swiper-item v-for="(tab,index1) in orders" :key="index1">
 				<scroll-view class="list" scroll-y>
-					<view class="orderList" @click="goDetail" v-for="(item, index) of 2" :key="index">
+					<view class="orderList" @click="goDetail(index)" v-for="(item, index) of tab.list" :key="index">
 						<view class="orderTop">
 							<view class="orderTime">
-								日期:2019-05-05 10:22:00
+								日期:{{item.orderTime}}
 							</view>
 							<view class="orderStatus">
-								<text>已完成</text>
+								<text>{{item.processName}}</text>
 							</view>
 						</view>
 						<view class="orderProduct">
@@ -22,7 +22,7 @@
 							</view>
 							<view class="productMsg">
 								<view class="productTitle">
-									美缝剂胶
+									{{item.orderCode}}
 								</view>
 								<view class="productSmall">
 									蓝白色
@@ -44,10 +44,10 @@
 							</view>
 						</view>
 						<view class="orderHandle">
-							<view class="handleList" @tap="delOrder(index)">
+							<view class="handleList" @tap.stop="delOrder(index)">
 								删除订单
 							</view>
-							<view class="handleList" @tap="again(index)">
+							<view class="handleList" @tap.stop="again(index)">
 								再次下单
 							</view>
 						</view>
@@ -70,9 +70,6 @@
 			uniIcon
 		},
 		data() {
-			// return {
-			// 	navList: ['全部订单', '已付款', '已完成', '售后/退货']
-			// }
 			return {
 				page: {
 					pageNum: 1,
@@ -81,37 +78,27 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				tabIndex: 0,
-				newsitems: [{
-					name: '全部订单',
-					id: 'all'
-				}, {
-					name: '待支付',
-					id: 'zhi'
-				}, {
-					name: '已付款',
-					id: 'fu'
-				}, {
-					name: '已完成',
-					id: 'wan'
-				}, {
-					name: '售后/退货',
-					id: 'shou'
-				}],
+				orders: [],
 				tabBars: [{
 					name: '全部订单',
-					id: 'all'
+					id: 'all',
+					pid: 0
 				}, {
 					name: '待支付',
-					id: 'zhi'
+					id: 'zhi',
+					pid: 0
 				}, {
 					name: '已付款',
-					id: 'fu'
+					id: 'fu',
+					pid: 0
 				}, {
 					name: '已完成',
-					id: 'wan'
+					id: 'wan',
+					pid: 0
 				}, {
 					name: '售后/退货',
-					id: 'shou'
+					id: 'shou',
+					pid: 0
 				}],
 				contentText: {
 					contentdown: '上拉加载更多',
@@ -121,10 +108,20 @@
 			}
 		},
 		onLoad() {
-			this.getList()
+			this.initList()
 		},
 		methods: {
-			// 上滑加载更多
+			// 初始化订单列表
+			initList() {
+				this.orders = this.tabBars.map(item => {
+					return {
+						name: item.name,
+						pid: item.pid,
+						list: []
+					}
+				})
+				this.getList()
+			},
 			// 获取订单列表
 			getList() {
 				var _this = this
@@ -136,6 +133,9 @@
 					success(res) {
 						if (res.data.success) {
 							console.log(res.data.data)
+							_this.orders.map(item => {
+								item.list = res.data.data.rows
+							})
 						}
 					}
 				})
@@ -168,9 +168,9 @@
 					}
 				})
 			},
-			goDetail(e) {
+			goDetail(index) {
 				uni.navigateTo({
-					url: '/pages/template/tabbar/detail/detail?title=' + e.title
+					url: '/pages/orderDetail/orderDetail?orderid=' + index
 				});
 			},
 			close(index1, index2) {
@@ -355,6 +355,7 @@
 		line-height: 96upx;
 	}
 	.uni-tab-bar .active{
+		font-weight: bold;
 		border-bottom: 4upx solid #CA0C16;
 	}
 </style>
