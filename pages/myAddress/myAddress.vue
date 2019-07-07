@@ -60,6 +60,11 @@
 		},
 		onLoad() {
 			
+			uni.chooseAddress({
+				success(res) {
+					console.log(res)
+				}
+			})
 		},
 		
 		methods: {

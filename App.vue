@@ -15,6 +15,7 @@
 	/*每个页面公共css */
 	@import "/common/uni.css";
 	page{
+		height: 100%;
 		background-color: #eee;
 	}
 	.mainColor{
