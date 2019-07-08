@@ -2,25 +2,29 @@
 	<view class="content">
 		<!-- 头部信息 -->
 		<view class="topMsg">
-			<view class="logo">
-				<image class="headlogo" src="/static/icon/head.png" mode=""></image>
-			</view>
-			<view class="detile">
-				<view class="names list">店铺名称：遇上店铺</view>
-				<view class="address list">店铺地址：河北省石家庄市长安区</view>
-				<view class="phone list">客服电话：13355664455</view>
+			<view class="msgList" v-for="(item,index) in msgList" :key="index" :class="showActives == index?'actives':''" @click="showTitle(index)">
+				<view class="msgIcon parent">
+					<image class="son" v-if="showActives == index" :src="item.actimgs" mode=""></image>
+					<image class="son" v-else :src="item.imgs" mode=""></image>
+				</view>
+				<view class="msgItem">
+					{{item.title}}
+				</view>
 			</view>
 		</view>
 		<view class="main">
 			<!-- 左侧分类 -->
 			<scroll-view scroll-y="true" class="scroll-Y scroll-Y-L" >
-				<view class="scrollMain" v-for="it in mainList" :key="it.id">
-					<view class="scroll-view-item listTitle mainBackColor">{{it.name}}</view>
-					<view class="scroll-view-item listm" :class="titleId == item.id?'active':''" @click="changeItem(item.id)" v-for="item in it.children" :key="item.id">{{item.name}}</view>
+				<view class="scrollMain">
+					<view class="scroll-view-item listm" :class="titleId == item.id?'active':''" @click="changeItem(item.id)" v-for="item in mainList" :key="item.id">{{item.name}}</view>
 				</view>
 			</scroll-view>
 			<!-- 右侧列表 -->
 			<scroll-view scroll-y="true" class="scroll-Y scroll-Y-R">
+				<view class="bannerImg">
+					<image v-if="showActives == 0" src="/static/icon/banner2.png" mode=""></image>
+					<image v-if="showActives == 1" src="/static/icon/banner1.png" mode=""></image>
+				</view>
 				<view class="scroll-view-item rightList" v-for="(item,index) in lists" :key="index">
 					<view class="tipImg" @click="goProduct()">
 						<!-- <image class="imgs" :src="item.fileUrl" mode=""></image> -->
@@ -55,13 +59,59 @@
 								{{modal.priceShow}} <text class="sm">元</text>
 							</view>
 							<view class="pcont">
-								已选:{{colorActive.name}} <text v-if="num>0">× {{num}}</text>
+								已选:{{colorActive.name}}
 							</view>
 						</view>
 					</view>
 					<view class="modalCenter">
 						<view class="listColor" :class="colorOn == indexs?'on':''" @click="colorOnClick(indexs)" v-for="(item,indexs) in colorList" :key="indexs">
 							{{item.name}}
+						</view>
+					</view>
+					<view class="calculator">
+						<text>长宽相等(mm)</text>
+						<view class="caList">
+							<view class="calistM">
+								<text>砖长宽</text>
+								<picker class="inputs" @change="bindPickerChange" :value="index" :range="array">
+									<view class="picker">
+									  {{calculator.whNum}}
+									</view>
+								</picker>
+							</view>
+							<view class="calistM">
+								<text>砖数</text>
+								<input type="number" v-model.number="calculator.zNum">
+							</view>
+							<view class="calistM">
+								<text>缝宽</text>
+								<input type="number" v-model.number="calculator.fNum">
+							</view>
+							<view class="calistM btn" @click="calculat()">
+								计算
+							</view>
+						</view>
+						<text>指定长宽(mm)</text>
+						<view class="caList">
+							<view class="calistM calistS">
+								<text>砖长</text>
+								<input type="number" v-model.number="calculator1.wNum">
+							</view>
+							<view class="calistM calistS">
+								<text>砖宽</text>
+								<input type="number" v-model.number="calculator1.hNum">
+							</view>
+							<view class="calistM calistS">
+								<text>砖数</text> 
+								<input type="number" v-model.number="calculator1.zNum">
+							</view>
+							<view class="calistM calistS">
+								<text>缝宽</text>
+								<input type="number" v-model.number="calculator1.fNum">
+							</view>
+							<view class="calistM calistS btn" @click="calculat1()">
+								计算
+							</view>
 						</view>
 					</view>
 					<view class="modalNum">
@@ -96,22 +146,106 @@
 		data() { 
 			return { 
 				titleId: '',
+				msgList:[
+					{
+						title:'高守施工',
+						imgs:'/static/icon/shigong1.png',
+						actimgs:'/static/icon/shigong.png'
+					},
+					{
+						title:'高守精品',
+						imgs:'/static/icon/jingxuan1.png',
+						actimgs:'/static/icon/jingxuan.png'
+					}
+				],
+				array:[800,600,300,1000,1200],
+				showActives:'0',
 				lists:[],
-				num:1, 
+				num:0, 
 				colorOn:0,
 				colorActive:{},
 				colorList:[],
 				showModal:false,
 				modal:{},
+				index: 0, 
+				calculator:{
+					whNum:800,
+					zNum:null,
+					fNum:null
+				},
+				calculator1:{
+					wNum:null,
+					hNum:null,
+					zNum:null,
+					fNum:null
+				},
 				mainList:[]
 			}
 		},
 		mounted() {
-			this.queryTypeTree();
+			this.queryTypeTree(this.showActives);
 		},
 		methods: {
+			//顶部切换
+			showTitle:function(index){
+				this.showActives = index;
+				this.queryTypeTree(index);
+			},
+			//计算器
+			calculat:function(){
+				var n = this.calculator.zNum;
+				var w = this.calculator.whNum/1000;
+				var h = this.calculator.whNum/1000;
+				var fw = this.calculator.fNum;
+				var sum = Math.ceil(n*7*fw/400/0.55/(w*2));
+				this.num+=sum;
+				if(sum){
+					uni.showToast({
+						icon:"none",
+						title:"数量加"+sum
+					})
+				}else{
+					uni.showToast({
+						icon:"none",
+						title:"请填写数据后再计算"
+					})
+					this.num = 0
+				}
+				this.calculator.zNum = null;
+				this.calculator.whNum = 800;
+				this.calculator.fNum = null;
+				
+			},
+			calculat1:function(){
+				var n = this.calculator1.zNum;
+				var w = this.calculator1.wNum/1000;
+				var h = this.calculator1.hNum/1000;
+				var fw = this.calculator1.fNum;
+				var sum = Math.ceil(n*7*fw/400/0.55/(w+h));
+				this.num+=sum;
+				if(sum){
+					uni.showToast({
+						icon:"none",
+						title:"数量加"+sum
+					})
+				}else{
+					uni.showToast({
+						icon:"none",
+						title:"请填写数据后再计算"
+					})
+					this.num = 0
+				}
+				this.calculator.zNum = null;
+				this.calculator.wNum = null;
+				this.calculator.hNum = null;
+				this.calculator.fNum = null;
+				
+			},
+			 bindPickerChange: function(e) {
+				this.calculator.whNum = this.array[e.detail.value];
+			  },
 			//获取商品类型
-			queryTypeTree:function(){
+			queryTypeTree:function(indexs){
 				var that = this;
 				uni.request({
 					method: 'GET',
@@ -121,14 +255,15 @@
 					},
 					success: (res) => {
 						if(res.data.success){
-							that.mainList = res.data.data;
-							that.titleId = that.mainList[0].children[0].id;
+							that.mainList = res.data.data[indexs].children;
+							that.titleId = that.mainList[0].id;
 							that.queryGoodByType();
 						}else{
 							uni.showToast({
 								icon:"none",
 								title:res.data.msg
 							})
+							
 						}
 						
 					}
@@ -296,42 +431,45 @@
 	
 	.topMsg{
 		display: flex;
-		padding: 40upx 20upx;
 		box-sizing: border-box;
-		height: 223upx;
-		font-size: 32upx;
 		background-color: #FFFFFF;
-		border-bottom: 1px solid #f5f5f5;
+		color: #000000;
 	}
-	.topMsg .logo{
-		position: relative;
-		width: 20%;
+	.topMsg .msgList{
+		width: 50%;
+		text-align: center;
+		padding: 30upx;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 1px solid #FFFFFF;
+	}
+	.topMsg .msgList .msgIcon{
+		width: 10%;
+		padding-bottom: 10%;
+		margin-right: 10upx;
+	}
+	.topMsg .msgList .item{
+		width: 80%;
+		font-size: 32upx;
+	}
+	.topMsg .actives{
+		color: #CA0C16;
+		border-bottom: 1px solid #CA0C16;
+	}
+	.bannerImg{
+		width: 100%;
 		height: 0;
-		padding-bottom: 20%;
-		border-radius: 16upx;
-		overflow: hidden;
+		padding-bottom: 27%;
+		position: relative;
 	}
-	.topMsg .logo .headlogo{
-		position:  absolute;
+	.bannerImg image{
+		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-	}
-	.topMsg .detile{
-		width: 80%;
-		padding-left: 20upx;
-		box-sizing: border-box;
-	}
-	.topMsg .detile .list{
-		overflow: hidden;
-		text-overflow:ellipsis;
-		white-space: nowrap;
-		margin-top: 20upx;
-		font-size: 30upx;
-	}
-	.topMsg .detile .names{
-		margin-top: 0;
 	}
 	.content{
 		height: 100%;
@@ -343,7 +481,7 @@
 	.scroll-Y-L{
 		width: 25%;
 		position: absolute;
-		top: 223upx;
+		top: 98upx;
 		bottom: 0;
 		background-color: #f5f5f5;
 		left: 0;
@@ -375,7 +513,7 @@
 	.scroll-Y-R{
 		width: 75%;
 		position: absolute;
-		top: 223upx;
+		top: 98upx;
 		bottom: 0;
 		right: 0;
 		background-color: #FFFFFF;
@@ -461,6 +599,58 @@
 		height: 100%;
 		opacity: 0.3;
 	}
+	.modal .calculator{
+		padding: 30upx;
+		background-color: #EEEEEE;
+	}
+	.modal .calculator text{
+		font-size: 22upx;
+	}
+	.modal .calculator .caList{
+		padding: 10upx;
+		display: flex;
+	}
+	.modal .calculator .caList .calistM{
+		width: 25%;
+		display: flex;
+		font-size: 20upx;
+		align-items: center;
+		text-align: center;
+	}
+	.modal .calculator .caList .calistS{
+		width: 20%;
+	}
+	.modal .calculator .caList text{
+		display: block;
+		width: 50%;
+	}
+	.modal .calculator .caList .btn{
+		width: auto;
+		padding: 20upx;
+		box-sizing: border-box;
+		font-size: 24upx;
+		background-color: #CA0C16;
+		color: #FFFFFF;
+		text-align: center;
+		border-radius: 10upx;
+		margin-left: 20upx;
+	}
+	.modal .calculator .caList .calistM input{
+		border: 1px solid #FFFFFF;
+		width: 50%;
+		
+	}
+	.inputs{
+		width: 50%;
+		height: 1.4rem;
+		
+		border: 1px solid #FFFFFF;
+		
+	}
+	.inputs view{
+		line-height: 1.4rem;
+		font-size: 24upx;
+	}
 	.modal .modalMain{
 		width: 100%;
 		background-color: #FFFFFF;
@@ -472,7 +662,7 @@
 	.modal .modalMain .modalTop{
 		display: flex;
 		padding: 20upx;
-		box-sizing: border-box;
+		box-sizing: border-box; 
 		border-bottom: 1px solid #f5f5f5;
 	}
 	.modal .modalMain .modalTop .topImgv{
@@ -516,7 +706,7 @@
 		margin-top: 20upx;
 	}
 	.modal .modalMain .modalCenter{
-		padding: 60upx 30upx;
+		padding: 60upx 30upx 30upx 30upx;
 		box-sizing: border-box;
 		display: flex;
 		flex-wrap: wrap;
@@ -552,7 +742,7 @@
 	.modal .modalMain .modalNum{
 		font-size: 28upx;
 		display: flex;
-		padding: 0 40upx 50upx 40upx;
+		padding: 50upx 40upx;
 		align-items:center;
 	}
 	.modal .modalMain .modalNum .addNum{
